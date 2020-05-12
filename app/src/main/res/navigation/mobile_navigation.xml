@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.inmubles2020.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/inquilino"
+        android:name="com.example.inmubles2020.ui.inquilino.Inquilino"
+        android:label="Inquilino"
+        tools:layout="@layout/fragment_inquilino" >
+        <action
+            android:id="@+id/action_inquilino_to_detalle_inquilino"
+            app:destination="@id/detalle_inquilino" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalle_inquilino"
+        android:name="com.example.inmubles2020.ui.inquilino.Detalle_inquilino"
+        android:label="fragment_detalle_inquilino"
+        tools:layout="@layout/fragment_detalle_inquilino" >
+        <action
+            android:id="@+id/action_detalle_inquilino_to_inquilino"
+            app:destination="@id/inquilino" />
+    </fragment>
+    <fragment
+        android:id="@+id/propiedades"
+        android:name="com.example.inmubles2020.ui.propiedades.propiedades"
+        android:label="fragment_propiedades"
+        tools:layout="@layout/fragment_propiedades" >
+        <action
+            android:id="@+id/action_propiedades_to_detalle_propiedades"
+            app:destination="@id/detalle_propiedades" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalle_propiedades"
+        android:name="com.example.inmubles2020.ui.propiedades.detalle_propiedades"
+        android:label="fragment_detalle_propiedades"
+        tools:layout="@layout/fragment_detalle_propiedades" >
+        <action
+            android:id="@+id/action_detalle_propiedades_to_propiedades"
+            app:destination="@id/propiedades" />
+    </fragment>
+    <fragment
+        android:id="@+id/pagos"
+        android:name="com.example.inmubles2020.ui.pagos.pagos"
+        android:label="fragment_pagos"
+        tools:layout="@layout/fragment_pagos" >
+        <action
+            android:id="@+id/action_pagos_to_detalle_pagos"
+            app:destination="@id/detalle_pagos" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalle_pagos"
+        android:name="com.example.inmubles2020.ui.pagos.detalle_pagos"
+        android:label="fragment_detalle_pagos"
+        tools:layout="@layout/fragment_detalle_pagos" >
+        <action
+            android:id="@+id/action_detalle_pagos_to_pagos"
+            app:destination="@id/pagos" />
+    </fragment>
+    <fragment
+        android:id="@+id/contratos"
+        android:name="com.example.inmubles2020.ui.contratos.contratos"
+        android:label="fragment_contratos"
+        tools:layout="@layout/fragment_contratos" >
+        <action
+            android:id="@+id/action_contratos_to_detalle_contratos"
+            app:destination="@id/detalle_contratos" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalle_contratos"
+        android:name="com.example.inmubles2020.ui.contratos.detalle_contratos"
+        android:label="fragment_detalle_contratos"
+        tools:layout="@layout/fragment_detalle_contratos" >
+        <action
+            android:id="@+id/action_detalle_contratos_to_contratos"
+            app:destination="@id/contratos" />
+    </fragment>
+    <fragment
+        android:id="@+id/cerrar_sesion2"
+        android:name="com.example.inmubles2020.cerrar_sesion"
+        android:label="fragment_cerrar_sesion"
+        tools:layout="@layout/fragment_cerrar_sesion" />
+    <fragment
+        android:id="@+id/perfiles"
+        android:name="com.example.inmubles2020.ui.perfiles.perfiles"
+        android:label="fragment_perfiles"
+        tools:layout="@layout/fragment_perfiles" />
+
+</navigation>
