@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.inmubles2020.ui.home.HomeFragment"
-        android:label="@string/menu_home"
+        android:label="Contacto"
         tools:layout="@layout/fragment_home"/>
     <fragment
         android:id="@+id/inquilino"
         android:name="com.example.inmubles2020.ui.inquilino.Inquilino"
-        android:label="Inquilino"
+        android:label="Inquilinos"
         tools:layout="@layout/fragment_inquilino" >
         <action
             android:id="@+id/action_inquilino_to_detalle_inquilino"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/detalle_inquilino"
         android:name="com.example.inmubles2020.ui.inquilino.Detalle_inquilino"
-        android:label="fragment_detalle_inquilino"
+        android:label="Datos Inquilino"
         tools:layout="@layout/fragment_detalle_inquilino" >
         <action
             android:id="@+id/action_detalle_inquilino_to_inquilino"
@@ -31,7 +31,7 @@
     <fragment
         android:id="@+id/propiedades"
         android:name="com.example.inmubles2020.ui.propiedades.propiedades"
-        android:label="fragment_propiedades"
+        android:label="Propiedades"
         tools:layout="@layout/fragment_propiedades" >
         <action
             android:id="@+id/action_propiedades_to_detalle_propiedades"
@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/detalle_propiedades"
         android:name="com.example.inmubles2020.ui.propiedades.detalle_propiedades"
-        android:label="fragment_detalle_propiedades"
+        android:label="Detalle Propiedad"
         tools:layout="@layout/fragment_detalle_propiedades" >
         <action
             android:id="@+id/action_detalle_propiedades_to_propiedades"
@@ -49,7 +49,7 @@
     <fragment
         android:id="@+id/pagos"
         android:name="com.example.inmubles2020.ui.pagos.pagos"
-        android:label="fragment_pagos"
+        android:label="Prop. Alquiladas"
         tools:layout="@layout/fragment_pagos" >
         <action
             android:id="@+id/action_pagos_to_detalle_pagos"
@@ -58,7 +58,7 @@
     <fragment
         android:id="@+id/detalle_pagos"
         android:name="com.example.inmubles2020.ui.pagos.detalle_pagos"
-        android:label="fragment_detalle_pagos"
+        android:label="Detalle Pagos"
         tools:layout="@layout/fragment_detalle_pagos" >
         <action
             android:id="@+id/action_detalle_pagos_to_pagos"
@@ -67,7 +67,7 @@
     <fragment
         android:id="@+id/contratos"
         android:name="com.example.inmubles2020.ui.contratos.contratos"
-        android:label="fragment_contratos"
+        android:label="Contratos Vigentes"
         tools:layout="@layout/fragment_contratos" >
         <action
             android:id="@+id/action_contratos_to_detalle_contratos"
@@ -76,7 +76,7 @@
     <fragment
         android:id="@+id/detalle_contratos"
         android:name="com.example.inmubles2020.ui.contratos.detalle_contratos"
-        android:label="fragment_detalle_contratos"
+        android:label="Detalle Contrato"
         tools:layout="@layout/fragment_detalle_contratos" >
         <action
             android:id="@+id/action_detalle_contratos_to_contratos"
@@ -90,7 +90,7 @@
     <fragment
         android:id="@+id/perfiles"
         android:name="com.example.inmubles2020.ui.perfiles.perfiles"
-        android:label="fragment_perfiles"
+        android:label="Perfil Usuario"
         tools:layout="@layout/fragment_perfiles" />
 
 </navigation>

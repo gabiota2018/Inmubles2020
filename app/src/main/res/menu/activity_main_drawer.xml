@@ -7,11 +7,11 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/contacto"
-            android:title="Home" />
+            android:title="Contacto" />
         <item
             android:id="@+id/perfiles"
             android:icon="@drawable/usuario"
-            android:title="Perfiles" />
+            android:title="Perfil" />
         <item
             android:id="@+id/propiedades"
             android:icon="@drawable/casas"
@@ -19,7 +19,7 @@
         <item
             android:id="@+id/inquilino"
             android:icon="@drawable/inquilinos"
-            android:title="Inquilino" />
+            android:title="Inquilinos" />
 
         <item
             android:id="@+id/pagos"
