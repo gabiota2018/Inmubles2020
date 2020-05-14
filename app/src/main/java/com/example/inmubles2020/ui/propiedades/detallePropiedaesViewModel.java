@@ -14,10 +14,7 @@ public class detallePropiedaesViewModel extends ViewModel {
     private MutableLiveData<String> etTipoP;
     private MutableLiveData<String> etUsoP;
     private MutableLiveData<String> etPrecioP;
-
     private MutableLiveData<Boolean> cbDisponibleP;
-    private MutableLiveData<String>  tvIdP;
-    private MutableLiveData<String>  tvIdDuenioP;
 
     public LiveData<String> etDireccionP() {
         if(etDireccionP==null){
@@ -55,32 +52,18 @@ public class detallePropiedaesViewModel extends ViewModel {
         }
         return cbDisponibleP;
     }
-    public MutableLiveData<String> tvIdP() {
-        if(tvIdP==null){
-            tvIdP=new MutableLiveData<>();
-        }
-        return tvIdP;
-    }
-    public MutableLiveData<String> tvIdDuenioP() {
-        if(tvIdDuenioP==null){
-            tvIdDuenioP=new MutableLiveData<>();
-        }
-        return tvIdDuenioP;
-    }
+
     public void obtenerDatosInmuebles(String palabra){
         Inmuebles miInmuebles=new Inmuebles();
         String[] partes = palabra.split("-");
         Integer part1 =Integer. parseInt(partes[0]);
         miInmuebles=miInmuebles.obtenerPorIdInmueble(part1);
-        tvIdP.setValue(miInmuebles.getIdInmueble()+"");
+
         etDireccionP.setValue(miInmuebles.getDireccion());
-        etAmbienteP.setValue(miInmuebles.getAmbientes()+"");
-        etTipoP.setValue(miInmuebles.getTipo());
-        etUsoP.setValue(miInmuebles.getUso());
-        etPrecioP.setValue(miInmuebles.getPrecio()+"");
-        tvIdDuenioP.setValue("sacar este dato");
-        //Propietarios miPropietario=new Propietarios();
-        //miPropietario=miInmuebles.getDuenio();
+        etAmbienteP.setValue("Cantidad de ambientes: "+miInmuebles.getAmbientes()+"");
+        etTipoP.setValue("Tipo de inmueble: "+miInmuebles.getTipo());
+        etUsoP.setValue("Uso permitido: "+miInmuebles.getUso());
+        etPrecioP.setValue("Cuota mensual $: "+miInmuebles.getPrecio()+"");
 
         if(miInmuebles.getDisponible()==1)
           cbDisponibleP.setValue(true);

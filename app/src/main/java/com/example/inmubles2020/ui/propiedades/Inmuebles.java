@@ -15,21 +15,11 @@ public class Inmuebles {
    private String uso;
    private  double precio;
    private  int disponible;
-   private Propietarios miDuenio;
+   private String miDuenio;
    //private perfiles.Propietarios propietario;
 
     public Inmuebles(){}
-    public Inmuebles(int idInmueble,String direccion, int ambientes,String tipo, double precio,int disponible,String uso,Propietarios miDuenio ){
-        this.idInmueble=idInmueble;
-        this.direccion=direccion;
-        this.ambientes=ambientes;
-        this.tipo=tipo;
-        this.uso=uso;
-        this.precio=precio;
-        this.disponible=disponible;
-        this.miDuenio=miDuenio;
 
-    }
     //---------------------------------------------------------
     public int getIdInmueble() {
         return idInmueble;
@@ -81,11 +71,11 @@ public class Inmuebles {
 
    //---------------------------------------------------------
 
-    public Propietarios getMiDuenio() {
+    public String getMiDuenio() {
         return miDuenio;
     }
 
-    public void setMiDuenio(Propietarios miDuenio) {
+    public void setMiDuenio(String miDuenio) {
         this.miDuenio = miDuenio;
     }
     //---------------------------------------------------------
@@ -106,11 +96,10 @@ public class Inmuebles {
         miInmueble.setIdInmueble(1);
         miInmueble.setDireccion("Mar del Plata 245");
         miInmueble.setAmbientes(5);
-        miInmueble.setTipo("vivienda");
+        miInmueble.setUso("Vivienda");
+        miInmueble.setTipo("Casa");
         miInmueble.setPrecio(12000);
         miInmueble.setDisponible(0);
-       // miDuenio=miDuenio.devolverPorId(1);
-       // miInmueble.setMiDuenio(miDuenio);
 
         listado.add(miInmueble);
 
@@ -118,25 +107,21 @@ public class Inmuebles {
         miInmueble.setIdInmueble(2);
         miInmueble.setDireccion("Lic1 Mz2 Cs3");
         miInmueble.setAmbientes(2);
-        miInmueble.setTipo("local");
+        miInmueble.setUso("Comercial");
+        miInmueble.setTipo("Local");
         miInmueble.setPrecio(20000);
         miInmueble.setDisponible(1);
-        //miDuenio=miDuenio.devolverPorId(1);
-        //miInmueble.setMiDuenio(miDuenio);
-
 
         listado.add(miInmueble);
 
         miInmueble = new Inmuebles();
         miInmueble.setIdInmueble(3);
-        miInmueble.setDireccion("Pringles 123");
+        miInmueble.setDireccion("Pringles 123 Planta Baja A");
         miInmueble.setAmbientes(3);
-        miInmueble.setTipo("vivienda");
+        miInmueble.setUso("Oficina");
+        miInmueble.setTipo("Departamento");
         miInmueble.setPrecio(13500);
         miInmueble.setDisponible(0);
-       //miDuenio=miDuenio.devolverPorId(2);
-       //miInmueble.setMiDuenio(miDuenio);
-
 
         listado.add(miInmueble);
         return listado;

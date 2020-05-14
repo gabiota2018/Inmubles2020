@@ -7,35 +7,35 @@
     android:background="#B1B1AC"
     tools:context=".Logueo">
 
+
     <EditText
         android:id="@+id/etMailLogueo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#000000"
         android:ems="10"
         android:enabled="true"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintHorizontal_bias="0.977"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/etPasswordLogueo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#000000"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.403"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etMailLogueo" />
 
@@ -56,32 +56,43 @@
 
     <Button
         android:id="@+id/btnEnviarLogueo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="50dp"
+        android:background="#203363"
         android:text="Enviar"
+        android:textColor="#B1B1AC"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.418"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordLogueo" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="58dp"
-        android:layout_height="44dp"
-        app:srcCompat="@drawable/candado"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="153dp" />
+        android:layout_width="27dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/etPasswordLogueo"
+        app:layout_constraintHorizontal_bias="0.777"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.146"
+        app:srcCompat="@drawable/candado" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="54dp"
-        android:layout_height="44dp"
-        app:srcCompat="@drawable/logueo"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="68dp" />
+        android:layout_width="23dp"
+        android:layout_height="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/etMailLogueo"
+        app:layout_constraintHorizontal_bias="0.335"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.184"
+        app:srcCompat="@drawable/logueo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

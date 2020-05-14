@@ -58,16 +58,18 @@ public class PerfilesViewModel extends ViewModel {
         Propietarios miPropietario=new Propietarios();
         miPropietario=miPropietario.devolverPorDni(dniBuscado);
         apellido.setValue(miPropietario.getApellido());
-        dni.setValue(miPropietario.getDni()+"");
+        dni.setValue("DNI: "+miPropietario.getDni()+"");
         nombre.setValue(miPropietario.getNombre());
-        telefono.setValue(miPropietario.getTelefono());
-        mail.setValue(miPropietario.getMail());
-        password.setValue(miPropietario.getPassword());
+        telefono.setValue("Teléfono: "+miPropietario.getTelefono());
+        mail.setValue("Email: "+miPropietario.getMail());
+        password.setValue("Password: "+miPropietario.getPassword());
     }
 
-public void actualizar(){}
+public void actualizar(){
     /*public void actualizar(String dni, String apellido, String nombre, String mail, String telefono, String password) {
         Propietarios miPropietario=new Propietarios();
-        miPropietario.modificarPropietario(dni,apellido,nombre,mail,telefono,password);
-    }*/
+        miPropietario.modificarPropietario(dni,apellido,nombre,mail,telefono,password);*/
+
+
+    }
 }

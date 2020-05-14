@@ -27,7 +27,7 @@ public class pagosViewModel extends ViewModel {
         Inmuebles miInmueble=new Inmuebles();
         String cadena="";
         for (Inmuebles s : todos = miInmueble.obtenerAlquilados()) {
-            cadena=s.getIdInmueble()+" - "+s.getDireccion();
+            cadena=s.getIdInmueble()+"-"+s.getDireccion();
             listado.add(cadena);
         };
         listaDePagos.setValue(listado);

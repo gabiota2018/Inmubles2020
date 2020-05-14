@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#203363"
     tools:context=".ui.inquilino.Inquilino">
     <!-- TODO: Update blank fragment layout -->
 
@@ -15,6 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="#B1B1AC"
         tools:layout_editor_absoluteY="103dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

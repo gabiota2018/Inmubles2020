@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView.setItemIconTintList(null);
 
         Intent i=getIntent();
-        usuario=i.getStringExtra("usuario");
+        //usuario=i.getStringExtra("usuario");
 
     }
 

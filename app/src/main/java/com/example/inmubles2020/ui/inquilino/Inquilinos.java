@@ -103,8 +103,29 @@ public Inquilinos obtenerPorId(int id){
         if(inqui.getIdInquilino()==id)
             miInquilino=inqui;
     };
-
-
     return miInquilino;
-}
+  }
+    public ArrayList<Inquilinos> obtenerInquilinosActuales(){
+        ArrayList<Inquilinos> palabras = new ArrayList<Inquilinos>();
+        Inquilinos miInquilino = new Inquilinos();
+
+        miInquilino.setIdInquilino(1);
+        miInquilino.setDni(21211211);
+        miInquilino.setNombre("María");
+        miInquilino.setApellido("Martinez");
+        miInquilino.setDireccion("Mar del Plata 245");
+        miInquilino.setTelefono("2664-110022");
+        palabras.add(miInquilino);
+
+
+        miInquilino = new Inquilinos();
+        miInquilino.setIdInquilino(3);
+        miInquilino.setDni(30333000);
+        miInquilino.setNombre("Felicitas");
+        miInquilino.setApellido("Ramírez");
+        miInquilino.setDireccion("Mod 8 Mz 4 Cs 3");
+        miInquilino.setTelefono("2664-333000");
+        palabras.add(miInquilino);
+        return palabras;
+    }
 }

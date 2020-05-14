@@ -39,8 +39,8 @@ public class detallePagosViewModel extends ViewModel {
         listado= miPago.obtenerPorIdAlquiler(part1);
 
         //obtener direccion
-       // Inmuebles miInmueble=new Inmuebles();
-        //miInmueble=miInmueble.obtenerPorIdInmueble(part1);
+        Inmuebles miInmueble=new Inmuebles();
+        miInmueble=miInmueble.obtenerPorIdInmueble(part1);
 
         String cadena="";
         for (Pago s : listado ) {
@@ -48,7 +48,7 @@ public class detallePagosViewModel extends ViewModel {
             palabras.add(cadena);
         };
         listaDePagos.setValue(palabras);
-       // tvMensaje.setValue(miInmueble.getDireccion());
-        tvMensaje.setValue(partes[1]);
+        tvMensaje.setValue(miInmueble.getDireccion());
+
     }
 }

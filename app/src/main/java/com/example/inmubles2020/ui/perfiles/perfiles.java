@@ -21,12 +21,8 @@ public class perfiles extends Fragment {
     private EditText etDni,etApellido,etNombre,etTelefono,etMail,etPassword;
     private Button btnActualizar;
     private PerfilesViewModel vm;
-    public perfiles() {
-        // Required empty public constructor
-    }
 
-
-
+    public perfiles() { }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,33 +64,52 @@ public class perfiles extends Fragment {
                 etPassword.setText(s);
             }
         });
-      /*  btnActualizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //vm.actualizar(etDni.getText().toString(),etApellido.getText().toString(),etNombre.getText().toString(),etMail.getText().toString(),etTelefono.getText().toString(),etPassword.getText().toString());
-                vm.actualizar();
-            }
 
-        });*/
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_perfiles, container, false);
-
-
         etDni=view.findViewById(R.id.etDni);
         etApellido=view.findViewById(R.id.etApellido);
         etNombre=view.findViewById(R.id.etNombre);
         etTelefono=view.findViewById(R.id.etTelefono);
         etMail=view.findViewById(R.id.etMail);
         etPassword=view.findViewById(R.id.etPassword);
+        btnActualizar=view.findViewById(R.id.btnActualizarPerfil);
+        btnActualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                activar(view);
+            }
 
-
+        });
         // String palabra=getArguments().getString("palabra");
         vm.obtenerDatos(20200200);
-
         return view;
     }
+
+       public void activar(View v){
+        vm.obtenerDatos(20200200);
+        if(btnActualizar.getText()=="EDITAR")
+        {etDni.setEnabled(true);
+        etApellido.setEnabled(true);
+        etNombre.setEnabled(true);
+        etTelefono.setEnabled(true);
+        etMail.setEnabled(true);
+        etPassword.setEnabled(true);
+        btnActualizar.setText("GUARDAR");}
+        else {
+        etDni.setEnabled(false);
+        etApellido.setEnabled(false);
+        etNombre.setEnabled(false);
+        etTelefono.setEnabled(false);
+        etMail.setEnabled(false);
+        etPassword.setEnabled(false);
+        btnActualizar.setText("EDITAR");
+        vm.obtenerDatos(20200200);
+        }
+   }
 }

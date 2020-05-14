@@ -22,26 +22,15 @@ public class detalle_propiedades extends Fragment {
     private EditText etTipoP;
     private EditText etUsoP;
     private EditText etPrecioP;
-
     private CheckBox cbDisponibleP;
-
-    private TextView tvIdP;
-    private TextView tvIdDuenioP;
     private Button btnGuardarP;
-
-   private detallePropiedaesViewModel vm;
+    private detallePropiedaesViewModel vm;
 
     public detalle_propiedades() {}
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        vm=new detallePropiedaesViewModel();
-       vm.tvIdP().observe(this, new Observer<String>() {
-           @Override
-           public void onChanged(String s) {
-               tvIdP.setText(s);
-           }
-       });
        vm.etDireccionP().observe(this, new Observer<String>() {
            @Override
            public void onChanged(String s) {
@@ -72,12 +61,6 @@ public class detalle_propiedades extends Fragment {
                etPrecioP.setText(s);
            }
        });
-       vm.tvIdDuenioP().observe(this, new Observer<String>() {
-           @Override
-           public void onChanged(String s) {
-               tvIdDuenioP.setText(s);
-           }
-       });
        vm.cbDisponibleP().observe(this, new Observer<Boolean>() {
            @Override
            public void onChanged(Boolean aBoolean) {
@@ -97,9 +80,7 @@ public class detalle_propiedades extends Fragment {
         etTipoP=view.findViewById(R.id.etTipoP);
         etUsoP=view.findViewById(R.id.etUsoP);
         cbDisponibleP=view.findViewById(R.id.cbDisponibleP);
-        tvIdP=view.findViewById(R.id.tvIdP);
-        tvIdDuenioP=view.findViewById(R.id.tvIdDuenioP);
-
+       btnGuardarP=view.findViewById(R.id.btnGuardarP);
         String palabra=getArguments().getString("palabra");
         vm.obtenerDatosInmuebles(palabra);
         return view;

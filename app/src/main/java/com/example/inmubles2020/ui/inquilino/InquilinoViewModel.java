@@ -24,7 +24,9 @@ public class InquilinoViewModel extends ViewModel {
         ArrayList<String> palabras=new ArrayList<String>();
         Inquilinos miInquilino=new Inquilinos();
         String cadena="";
-        for (Inquilinos s : todos = miInquilino.TraerDatos()) {
+        //todos=miInquilino.obtenerInquilinosActuales();
+        todos=miInquilino.obtenerInquilinosActuales();
+        for (Inquilinos s : todos ) {
             cadena=s.getIdInquilino()+"-"+s.getApellido()+" "+s.getNombre();
             palabras.add(cadena);
         };

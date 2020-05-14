@@ -25,6 +25,7 @@ public class detalle_pagos extends Fragment {
     private ListView lv;
     private detallePagosViewModel vm;
     private TextView tvMensaje;
+
     public detalle_pagos() {}
 
 
