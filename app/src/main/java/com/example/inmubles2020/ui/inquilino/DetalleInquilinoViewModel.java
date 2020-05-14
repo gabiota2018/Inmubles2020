@@ -57,11 +57,11 @@ public class DetalleInquilinoViewModel extends ViewModel {
         Integer part1 =Integer. parseInt(partes[0]);
         miInquilino=miInquilino.obtenerPorId(part1);
         apellidoInq.setValue(miInquilino.getApellido());
-        idInq.setValue(miInquilino.getIdInquilino()+"");
+        idInq.setValue("N° "+ miInquilino.getIdInquilino()+"");
         nonbreInq.setValue(miInquilino.getNombre());
-        dniInq.setValue(miInquilino.getDni()+"");
-        telefonoInq.setValue(miInquilino.getTelefono());
-        direccionInq.setValue(miInquilino.getDireccion());
+        dniInq.setValue("DNI: "+miInquilino.getDni()+"");
+        telefonoInq.setValue("Teléfono: "+miInquilino.getTelefono());
+        direccionInq.setValue("Domicilio: "+miInquilino.getDireccion());
     }
 
 

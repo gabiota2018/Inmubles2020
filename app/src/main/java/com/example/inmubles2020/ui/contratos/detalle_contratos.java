@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.inmubles2020.R;
 
@@ -18,8 +19,6 @@ public class detalle_contratos extends Fragment {
     private EditText etPrecioA;
     private EditText etFechaInicioA;
     private EditText etFechaFinA;
-    private EditText etInquilino;
-    private EditText etInmueble;
 
     private  detalleContratosViewModel vm;
     public detalle_contratos() {}
@@ -54,33 +53,19 @@ public class detalle_contratos extends Fragment {
                 etFechaFinA.setText(s);
             }
         });
-        vm.etInquilino().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                etInquilino.setText(s);
-            }
-        });
-        vm.etInmueble().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                etInmueble.setText(s);
-            }
-        });
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view= inflater.inflate(R.layout.fragment_detalle_contratos, container, false);
+          View view= inflater.inflate(R.layout.fragment_detalle_contratos, container, false);
         etIdA=view.findViewById(R.id.etIdA);
         etPrecioA=view.findViewById(R.id.etPrecioA);
-        etFechaInicioA=view.findViewById(R.id.etFechaFinA);
+        etFechaInicioA=view.findViewById(R.id.etFechaInicioA);
         etFechaFinA=view.findViewById(R.id.etFechaFinA);
-        etInquilino=view.findViewById(R.id.etInquilinoA);
-        etInmueble=view.findViewById(R.id.etInmuebleA);
+
         String palabra=getArguments().getString("palabra");
-        vm.obtenerDatosAlquileres(palabra);
+        vm.obtenerDatosAlquileres(palabra);//segun el id del inmueble...
         return  view;
     }
 }

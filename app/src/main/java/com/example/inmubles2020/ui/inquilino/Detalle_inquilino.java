@@ -77,10 +77,10 @@ public class Detalle_inquilino extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_detalle_inquilino, container, false);
-        idInq=view.findViewById(R.id.etIdInq);
-        dniInq=view.findViewById(R.id.etDniInq);
-        apellidoInq=view.findViewById(R.id.etApellidoInq);
-        nombreInq= view.findViewById(R.id.etNombreInq);
+        idInq=view.findViewById(R.id.etIdA);
+        dniInq=view.findViewById(R.id.etPrecioA);
+        apellidoInq=view.findViewById(R.id.etFechaInicioA);
+        nombreInq= view.findViewById(R.id.etFechaFinA);
         telefonoInq=view.findViewById(R.id.etTelefonoInq);
         direccionInq=view.findViewById(R.id.etDireccionInq);
         String palabra=getArguments().getString("palabra");

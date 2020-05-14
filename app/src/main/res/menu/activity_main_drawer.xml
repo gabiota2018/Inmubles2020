@@ -10,26 +10,26 @@
             android:title="Home" />
         <item
             android:id="@+id/perfiles"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/usuario"
             android:title="Perfiles" />
         <item
             android:id="@+id/propiedades"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/casas"
             android:title="Propiedades" />
         <item
             android:id="@+id/inquilino"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/inquilinos"
             android:title="Inquilino" />
 
         <item
             android:id="@+id/pagos"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/pagos"
             android:title="Pagos" />
 
 
         <item
             android:id="@+id/contratos"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/contrato"
             android:title="Contratos" />
 
     </group>

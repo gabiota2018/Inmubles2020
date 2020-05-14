@@ -76,8 +76,8 @@ public class Propietarios {
         propietario.nombre = "ana";
         propietario.apellido = "acosta";
         propietario.telefono = "2661-001001";
-        propietario.mail = "ana@gmail.com";
-        propietario.password = "111";
+        propietario.mail = "a";//"ana@gmail.com";
+        propietario.password = "a";//"111";
         listaPropietario.add(propietario);
 
         propietario = new Propietarios();
@@ -133,6 +133,17 @@ public class Propietarios {
         for(Propietarios p:listado)
         {
             if(p.dni==dni)
+                propietario=p;
+        }
+        return  propietario;
+    }
+    public  Propietarios devolverPorId(Integer id){
+        List<Propietarios> listado = new ArrayList<Propietarios>();
+        Propietarios propietario = new Propietarios();
+        listado=propietario.listarPropietarios();
+        for(Propietarios p:listado)
+        {
+            if(p.idPropietario==id)
                 propietario=p;
         }
         return  propietario;

@@ -1,8 +1,8 @@
 package com.example.inmubles2020.ui.propiedades;
 
-import com.example.inmubles2020.ui.inquilino.Inquilinos;
+
 import com.example.inmubles2020.ui.perfiles.Propietarios;
-import com.example.inmubles2020.ui.perfiles.perfiles;
+
 
 import java.util.ArrayList;
 
@@ -15,11 +15,11 @@ public class Inmuebles {
    private String uso;
    private  double precio;
    private  int disponible;
-   private int idDuenio;
+   private Propietarios miDuenio;
    //private perfiles.Propietarios propietario;
 
     public Inmuebles(){}
-    public Inmuebles(int idInmueble,String direccion, int ambientes,String tipo, double precio,int disponible,String uso,int idDuenio ){
+    public Inmuebles(int idInmueble,String direccion, int ambientes,String tipo, double precio,int disponible,String uso,Propietarios miDuenio ){
         this.idInmueble=idInmueble;
         this.direccion=direccion;
         this.ambientes=ambientes;
@@ -27,9 +27,10 @@ public class Inmuebles {
         this.uso=uso;
         this.precio=precio;
         this.disponible=disponible;
-        this.idDuenio=idDuenio;
-        //this.perfiles.Propietario=propietario;
+        this.miDuenio=miDuenio;
+
     }
+    //---------------------------------------------------------
     public int getIdInmueble() {
         return idInmueble;
     }
@@ -37,7 +38,7 @@ public class Inmuebles {
     public void setIdInmueble(int idInmueble) {
         this.idInmueble = idInmueble;
     }
-
+    //---------------------------------------------------------
     public String getDireccion() {
         return direccion;
     }
@@ -45,7 +46,7 @@ public class Inmuebles {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
+    //---------------------------------------------------------
     public int getAmbientes() {
         return ambientes;
     }
@@ -53,7 +54,7 @@ public class Inmuebles {
     public void setAmbientes(int ambientes) {
         this.ambientes = ambientes;
     }
-
+    //---------------------------------------------------------
     public String getTipo() {
         return tipo;
     }
@@ -61,7 +62,7 @@ public class Inmuebles {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
+    //---------------------------------------------------------
     public double getPrecio() {
         return precio;
     }
@@ -69,7 +70,7 @@ public class Inmuebles {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
-
+    //---------------------------------------------------------
     public int getDisponible() {
         return disponible;
     }
@@ -78,18 +79,26 @@ public class Inmuebles {
         this.disponible = disponible;
     }
 
-    public int getIdDuenio() { return idDuenio; }
+   //---------------------------------------------------------
 
-    public void setIdDuenio(int idDuenio) {
-        this.idDuenio = idDuenio;
+    public Propietarios getMiDuenio() {
+        return miDuenio;
     }
 
-    public String getUso() { return uso; }
+    public void setMiDuenio(Propietarios miDuenio) {
+        this.miDuenio = miDuenio;
+    }
+    //---------------------------------------------------------
+
+    public String getUso() {
+        return uso;
+    }
 
     public void setUso(String uso) {
         this.uso = uso;
     }
 
+    //---------------------------------------------------------
     public ArrayList<Inmuebles> TraerDatos() {
         ArrayList<Inmuebles> listado = new ArrayList<Inmuebles>();
 
@@ -100,7 +109,8 @@ public class Inmuebles {
         miInmueble.setTipo("vivienda");
         miInmueble.setPrecio(12000);
         miInmueble.setDisponible(0);
-        miInmueble.setIdDuenio(1);
+       // miDuenio=miDuenio.devolverPorId(1);
+       // miInmueble.setMiDuenio(miDuenio);
 
         listado.add(miInmueble);
 
@@ -111,7 +121,9 @@ public class Inmuebles {
         miInmueble.setTipo("local");
         miInmueble.setPrecio(20000);
         miInmueble.setDisponible(1);
-        miInmueble.setIdDuenio(1);
+        //miDuenio=miDuenio.devolverPorId(1);
+        //miInmueble.setMiDuenio(miDuenio);
+
 
         listado.add(miInmueble);
 
@@ -122,7 +134,9 @@ public class Inmuebles {
         miInmueble.setTipo("vivienda");
         miInmueble.setPrecio(13500);
         miInmueble.setDisponible(0);
-        miInmueble.setIdDuenio(2);
+       //miDuenio=miDuenio.devolverPorId(2);
+       //miInmueble.setMiDuenio(miDuenio);
+
 
         listado.add(miInmueble);
         return listado;
@@ -137,14 +151,26 @@ public class Inmuebles {
         };
         return miInmueble;
     }
-    public Inmuebles obtenerPorIdDuenio(int id){
+    public ArrayList<Inmuebles> obtenerAlquilados(){
         ArrayList<Inmuebles> listado = new ArrayList<Inmuebles>();
+        ArrayList<Inmuebles> listadoAlquilados = new ArrayList<Inmuebles>();
         Inmuebles miInmueble=new Inmuebles();
         for (Inmuebles inqui : listado = TraerDatos()) {
-            if(inqui.getIdDuenio()==id)
+            if(inqui.getDisponible()==0)
+                listadoAlquilados.add(inqui);
+        };
+        return listadoAlquilados;
+    }
+  /*  public Inmuebles obtenerPorIdDuenio(int id){
+        ArrayList<Inmuebles> listado = new ArrayList<Inmuebles>();
+        Inmuebles miInmueble=new Inmuebles();
+        Propietarios miPropietario=new Propietarios();
+        for (Inmuebles inqui : listado = TraerDatos()) {
+            miPropietario=inqui.getMiDuenio();
+            if(miPropietario.getIdPropietario()==id)
                 miInmueble=inqui;
         };
         return miInmueble;
-    }
+    }*/
 
 }

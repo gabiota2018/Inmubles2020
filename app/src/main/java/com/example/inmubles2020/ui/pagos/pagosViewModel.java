@@ -19,13 +19,15 @@ public class pagosViewModel extends ViewModel {
         return listaDePagos;
     }
 
-    public void cargarDatos(){
-        ArrayList<Pago> todos=new ArrayList<Pago>();
+    public void cargarDatos()
+    {
+        ArrayList<Inmuebles> todos= new ArrayList<>();
         ArrayList<String> listado=new ArrayList<String>();
-        Pago miPago=new Pago();
+
+        Inmuebles miInmueble=new Inmuebles();
         String cadena="";
-        for (Pago s : todos = miPago.TraerDatos()) {
-            cadena=s.getIdPago()+"-"+s.getIdAlquiler()+" ";
+        for (Inmuebles s : todos = miInmueble.obtenerAlquilados()) {
+            cadena=s.getIdInmueble()+" - "+s.getDireccion();
             listado.add(cadena);
         };
         listaDePagos.setValue(listado);

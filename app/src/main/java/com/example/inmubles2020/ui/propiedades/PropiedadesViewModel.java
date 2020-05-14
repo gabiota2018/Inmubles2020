@@ -26,7 +26,7 @@ public class PropiedadesViewModel extends ViewModel {
         Inmuebles miInmueble=new Inmuebles();
         String cadena="";
         for (Inmuebles s : todos = miInmueble.TraerDatos()) {
-            cadena=s.getIdInmueble()+"-"+s.getDireccion()+" ";
+            cadena=s.getIdInmueble()+" - "+s.getDireccion()+" ";
             listado.add(cadena);
         };
         listaDeInmuebles.setValue(listado);

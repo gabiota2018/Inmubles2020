@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.inmubles2020.ui.inquilino.Inquilinos;
+import com.example.inmubles2020.ui.perfiles.Propietarios;
 
 public class detallePropiedaesViewModel extends ViewModel {
 
@@ -77,7 +78,10 @@ public class detallePropiedaesViewModel extends ViewModel {
         etTipoP.setValue(miInmuebles.getTipo());
         etUsoP.setValue(miInmuebles.getUso());
         etPrecioP.setValue(miInmuebles.getPrecio()+"");
-        tvIdDuenioP.setValue(miInmuebles.getIdDuenio()+"");
+        tvIdDuenioP.setValue("sacar este dato");
+        //Propietarios miPropietario=new Propietarios();
+        //miPropietario=miInmuebles.getDuenio();
+
         if(miInmuebles.getDisponible()==1)
           cbDisponibleP.setValue(true);
         else

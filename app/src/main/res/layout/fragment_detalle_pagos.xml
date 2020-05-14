@@ -1,18 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#203363"
     tools:context=".ui.pagos.detalle_pagos">
+    <!-- TODO: Update blank fragment layout -->
 
+    <ListView
+        android:id="@+id/listaPagos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="#B1B1AC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDireccionPagos" />
 
     <EditText
-        android:id="@+id/etIdPagos"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/etDireccionPagos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -20,68 +29,9 @@
         android:ems="10"
         android:enabled="true"
         android:gravity="center_horizontal|left"
-        android:hint="N°"
-        android:inputType="text" />
-    <EditText
-        android:id="@+id/etNumeroPago"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etId"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="110dp"
-        android:ems="10"
-        android:gravity="center_horizontal|left"
-        android:hint="Apellido"
-        android:inputType="text"/>
-
-    <EditText
-        android:id="@+id/etAlquilerPago"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="170dp"
-        android:ems="10"
-        android:enabled="true"
-        android:gravity="center_horizontal|left"
-        android:hint="Nombre"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etApellido" />
-
-    <EditText
-        android:id="@+id/etFechaPago"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="230dp"
-        android:ems="10"
-        android:enabled="true"
-        android:gravity="center_horizontal|left"
-        android:hint="DNI"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre" />
-
-    <EditText
-        android:id="@+id/etImportePago"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="290dp"
-        android:ems="10"
-        android:gravity="center_horizontal|left"
-        android:hint="Código-Número Telefónico"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDni" />
-
-</FrameLayout>
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

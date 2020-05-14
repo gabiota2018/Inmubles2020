@@ -1,6 +1,8 @@
 package com.example.inmubles2020.ui.contratos;
 
+import com.example.inmubles2020.ui.perfiles.Propietarios;
 import com.example.inmubles2020.ui.propiedades.Inmuebles;
+import com.example.inmubles2020.ui.inquilino.Inquilinos;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,20 +12,13 @@ public class Alquileres {
     private  double precio;
     private String fechaInicio;
     private String fechaFin;
-    private int idInquilino;
-    private int idInmueble;
+    private int miInquilino;
+    private int miInmueble;
+
+    private String nombreInquilino;
+    private String direccion;
 
     public Alquileres() { }
-
-    public Alquileres(int idAlquiler, double precio, String fechaInicio, String fechaFin, int idInquilino, int idInmueble) {
-        this.idAlquiler = idAlquiler;
-        this.precio = precio;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
-        this.idInquilino = idInquilino;
-        this.idInmueble = idInmueble;
-    }
-
 
     public int getIdAlquiler() {
         return idAlquiler;
@@ -57,21 +52,39 @@ public class Alquileres {
         this.fechaFin = fechaFin;
     }
 
-    public int getIdInquilino() {
-        return idInquilino;
+    public int getMiInquilino() {
+        return miInquilino;
     }
 
-    public void setIdInquilino(int idInquilino) {
-        this.idInquilino = idInquilino;
+    public void setMiInquilino(int miInquilino) {
+        this.miInquilino = miInquilino;
     }
 
-    public int getIdInmueble() {
-        return idInmueble;
+    public int getMiInmueble() {
+        return miInmueble;
     }
 
-    public void setIdInmueble(int idInmueble) {
-        this.idInmueble = idInmueble;
+    public void setMiInmueble(int miInmueble) {
+        this.miInmueble = miInmueble;
     }
+
+    public String getNombreInquilino() {
+        return nombreInquilino;
+    }
+
+    public void setNombreInquilino(String nombreInquilino) {
+        this.nombreInquilino = nombreInquilino;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+
 
     public ArrayList<Alquileres> TraerDatos() {
         ArrayList<Alquileres> listado = new ArrayList<Alquileres>();
@@ -81,17 +94,21 @@ public class Alquileres {
         miAlquiler.setPrecio(12000);
         miAlquiler.setFechaInicio("10/1/2020");
         miAlquiler.setFechaFin("10/1/2022");
-        miAlquiler.setIdInquilino(1);
-        miAlquiler.setIdInmueble(1);
+        miAlquiler.setMiInquilino(1);
+        miAlquiler.setNombreInquilino("María Martinez");
+        miAlquiler.setMiInmueble(1);
+        miAlquiler.setDireccion("Mar del Plata 245");
         listado.add(miAlquiler);
 
         miAlquiler = new Alquileres();
-        miAlquiler.setIdAlquiler(2);
-        miAlquiler.setPrecio(15000);
+        miAlquiler.setIdAlquiler(3);
+        miAlquiler.setPrecio(13500);
         miAlquiler.setFechaInicio("10/3/2020");
         miAlquiler.setFechaFin("10/3/2023");
-        miAlquiler.setIdInquilino(2);
-        miAlquiler.setIdInmueble(3);
+        miAlquiler.setMiInquilino(1);
+        miAlquiler.setNombreInquilino("Felicitas Ramirez");
+        miAlquiler.setMiInmueble(3);
+        miAlquiler.setDireccion("Pringles 123");
         listado.add(miAlquiler);
 
         return listado;
@@ -108,19 +125,11 @@ public class Alquileres {
     public Alquileres obtenerPorIdInmueble(int id){
         ArrayList<Alquileres> listado = new ArrayList<Alquileres>();
         Alquileres miAlquiler=new Alquileres();
-        for (Alquileres inqui : listado = TraerDatos()) {
-            if(inqui.getIdInmueble()==id)
-                miAlquiler=inqui;
+       for (Alquileres inqui : listado = TraerDatos()) {
+            if(inqui.getMiInmueble()==id)
+            { miAlquiler=inqui;}
         };
         return miAlquiler;
     }
-    /*public Alquileres obtenerPorIdDuenio(int id){
-        ArrayList<Alquileres> listado = new ArrayList<Alquileres>();
-        Alquileres miAlquiler=new Alquileres();
-        for (Alquileres inqui : listado = TraerDatos()) {
-            if(inqui.getIdInmueble()==id)
-                miAlquiler=inqui;
-        };
-        return miAlquiler;
-    }*/
+
 }

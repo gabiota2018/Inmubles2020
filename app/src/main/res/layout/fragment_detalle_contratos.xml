@@ -11,151 +11,60 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:gravity="center_horizontal|left"
-        android:hint="Calle- Altura"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etId"
-        android:clickable="false" />
-
-    <EditText
-        android:id="@+id/etPrecioA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:enabled="true"
         android:gravity="center_horizontal|left"
-        android:hint="Ambientes"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etApellido"
-        android:clickable="false" />
-
-    <EditText
-        android:id="@+id/etFechaInicioA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:enabled="true"
-        android:gravity="center_horizontal|left"
-        android:hint="Tipo"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre"
-        android:clickable="false" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etFechaFinA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:gravity="center_horizontal|left"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDni"
-        android:clickable="false" />
-
-    <EditText
-        android:id="@+id/etInquilinoA"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="170dp"
         android:ems="10"
         android:enabled="true"
         android:gravity="center_horizontal|left"
-        android:hint="Precio"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTelefono"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="false" />
+        app:layout_constraintTop_toBottomOf="@+id/etApellido" />
 
     <EditText
-        android:id="@+id/etInmuebleA"
+        android:id="@+id/etPrecioA"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="230dp"
         android:ems="10"
         android:enabled="true"
         android:gravity="center_horizontal|left"
-        android:hint="Precio"
+        android:hint="DNI"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTelefono"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="false" />
+        app:layout_constraintTop_toBottomOf="@+id/etNombre" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="285dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="60dp"
-        android:text="Cantidad de Ambientes" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/etFechaInicioA"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="N° Contrato" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:text="Precio" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="Fecha Inicio" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha Finalización" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Inquilino" />
-
-    <TextView
-        android:id="@+id/tvIdP"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Inmueble de "
-       />
-
-
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="110dp"
+        android:ems="10"
+        android:gravity="center_horizontal|left"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etId" />
 
 
 </FrameLayout>

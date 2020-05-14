@@ -24,9 +24,7 @@ public class Inquilino extends Fragment {
     private ListView lv;
     private InquilinoViewModel vm;
 
-    public Inquilino() {
-        // Required empty public constructor
-    }
+    public Inquilino() { }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,19 +45,17 @@ public class Inquilino extends Fragment {
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_inquilino, container, false);
         vm.cargarDatos();
-        lv=view.findViewById(R.id.listaInquilinos);
-        lv.setClickable(true);
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView tv=(TextView)view;
-                Bundle bundle=new Bundle();
-                bundle.putString("palabra",tv.getText().toString());
-                Navigation.findNavController(view).navigate(R.id.detalle_inquilino, bundle);
+                lv=view.findViewById(R.id.listaInquilinos);
+                lv.setClickable(true);
+                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        TextView tv=(TextView)view;
+                        Bundle bundle=new Bundle();
+                        bundle.putString("palabra",tv.getText().toString());
+                        Navigation.findNavController(view).navigate(R.id.detalle_inquilino, bundle);
             }
         });
-
-
         return view;
     }
 }

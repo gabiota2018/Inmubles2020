@@ -6,12 +6,14 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.inmubles2020.ui.propiedades.Inmuebles;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class contratosViewModel extends ViewModel {
 
     private MutableLiveData<List<String>> listaDeContratos;
+
 
     public LiveData<List<String>> getListaDeContratos() {
         if(listaDeContratos==null){
@@ -22,13 +24,13 @@ public class contratosViewModel extends ViewModel {
 
     public void cargarDatos(){
 
-        ArrayList<Alquileres> todos=new ArrayList<Alquileres>();
+        ArrayList<Inmuebles> todos= new ArrayList<>();
         ArrayList<String> listado=new ArrayList<String>();
-        Alquileres miAlquiler=new Alquileres();
+
+        Inmuebles miInmueble=new Inmuebles();
         String cadena="";
-        for (Alquileres s : todos = miAlquiler.TraerDatos()) {
-           //la direccion del obj.inmueble
-            cadena=s.getIdAlquiler()+"-"+"Pringles 248"+" ";
+       for (Inmuebles s : todos = miInmueble.obtenerAlquilados()) {
+            cadena=s.getIdInmueble()+" - "+s.getDireccion();
             listado.add(cadena);
         };
         listaDeContratos.setValue(listado);

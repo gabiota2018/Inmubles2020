@@ -1,58 +1,54 @@
 package com.example.inmubles2020.ui.pagos;
 
+import android.os.Bundle;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.inmubles2020.ui.inquilino.Inquilinos;
 import com.example.inmubles2020.ui.propiedades.Inmuebles;
 
-public class detallePagosViewModel extends ViewModel {
-    private MutableLiveData<String> idPagos;
-    private MutableLiveData<String> numeroPago;
-    private MutableLiveData<String> alquilerPago;
-    private MutableLiveData<String> fecha;
-    private MutableLiveData<String> importe;
+import java.util.ArrayList;
+import java.util.List;
 
-    public LiveData<String> getIdPagos() {
-        if(idPagos==null){
-            idPagos=new MutableLiveData<>();
+public class detallePagosViewModel extends ViewModel {
+    private MutableLiveData<List<String>> listaDePagos;
+    private MutableLiveData<String> tvMensaje;
+
+    public LiveData<List<String>> getListaDePagos() {
+        if(listaDePagos==null){
+            listaDePagos=new MutableLiveData<>();
         }
-        return idPagos;
+        return listaDePagos;
     }
-    public LiveData<String> getNumeroPago() {
-        if(numeroPago==null){
-            numeroPago=new MutableLiveData<>();
+    public LiveData<String> getTvMensaje(){
+        if(tvMensaje==null){
+            tvMensaje=new MutableLiveData<>();
         }
-        return numeroPago;
+        return  tvMensaje;
     }
-    public LiveData<String> getAlquilerPago() {
-        if(alquilerPago==null){
-            alquilerPago =new MutableLiveData<>();
-        }
-        return alquilerPago;
-    }
-    public LiveData<String> getFecha() {
-        if(fecha==null){
-           fecha=new MutableLiveData<>();
-        }
-        return fecha;
-    }
-    public LiveData<String> getImporte() {
-        if(importe==null){
-           importe=new MutableLiveData<>();
-        }
-        return importe;
-    }
-    public void obtenerDatosPagos(String palabra){
+
+    public void cargarDatos(String palabra){
         Pago miPago=new Pago();
+        ArrayList<Pago> listado = new ArrayList<Pago>();
+        ArrayList<String> palabras=new ArrayList<String>();
+
         String[] partes = palabra.split("-");
         Integer part1 =Integer. parseInt(partes[0]);
-        miPago=miPago.obtenerPorIdPago(part1);
-        idPagos.setValue(miPago.getIdPago()+"");
-        numeroPago.setValue(miPago.getNroPago()+"");
-        alquilerPago.setValue(miPago.getIdAlquiler()+"");//traeer el domicilio y el inquilino
-        fecha.setValue(miPago.getFecha());
-        importe.setValue(miPago.getImporte()+"");
+        listado= miPago.obtenerPorIdAlquiler(part1);
 
+        //obtener direccion
+       // Inmuebles miInmueble=new Inmuebles();
+        //miInmueble=miInmueble.obtenerPorIdInmueble(part1);
+
+        String cadena="";
+        for (Pago s : listado ) {
+            cadena="Pago N°"+s.getNroPago()+"-"+s.getFecha()+" $"+s.getImporte();
+            palabras.add(cadena);
+        };
+        listaDePagos.setValue(palabras);
+       // tvMensaje.setValue(miInmueble.getDireccion());
+        tvMensaje.setValue(partes[1]);
     }
 }

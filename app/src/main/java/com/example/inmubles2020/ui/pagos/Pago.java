@@ -56,7 +56,7 @@ public class Pago {
     public Pago(int idPago, int nroPago, int idAlquiler, String fecha, double importe) {
         this.idPago = idPago;
         this.nroPago = nroPago;
-        this.idAlquiler = idAlquiler;
+        this.idAlquiler = idAlquiler;//tiene el id del inmueble
         this.fecha = fecha;
         this.importe = importe;
     }
@@ -66,16 +66,63 @@ public class Pago {
         Pago miPago = new Pago();
         miPago.setIdPago(1);
         miPago.setNroPago(1);
-        miPago.setIdAlquiler(1);
-        miPago.setFecha("10/2/2020");
+        miPago.setIdAlquiler(1);//id de la casa
+        miPago.setFecha("10/1/2020");
         miPago.setImporte(12000);
         listado.add(miPago);
 
         miPago = new Pago();
         miPago.setIdPago(2);
-        miPago.setNroPago(1);
-        miPago.setIdAlquiler(2);
+        miPago.setNroPago(2);
+        miPago.setIdAlquiler(1);//id de la casa
+        miPago.setFecha("10/2/2020");
+        miPago.setImporte(12000);
+        listado.add(miPago);
+
+        miPago = new Pago();
+        miPago.setIdPago(3);
+        miPago.setNroPago(3);
+        miPago.setIdAlquiler(1);//id de la casa
+        miPago.setFecha("10/3/2020");
+        miPago.setImporte(12000);
+        listado.add(miPago);
+
+        miPago = new Pago();
+        miPago.setIdPago(4);
+        miPago.setNroPago(4);
+        miPago.setIdAlquiler(1);//id de la casa
         miPago.setFecha("10/4/2020");
+        miPago.setImporte(12000);
+        listado.add(miPago);
+
+        miPago = new Pago();
+        miPago.setIdPago(5);
+        miPago.setNroPago(5);
+        miPago.setIdAlquiler(1);//id de la casa
+        miPago.setFecha("10/5/2020");
+        miPago.setImporte(12000);
+        listado.add(miPago);
+
+
+        miPago = new Pago();
+        miPago.setIdPago(6);
+        miPago.setNroPago(1);
+        miPago.setIdAlquiler(3);//id de la casa
+        miPago.setFecha("10/3/2020");
+        miPago.setImporte(15000);
+        listado.add(miPago);
+
+        miPago.setIdPago(7);
+        miPago.setNroPago(2);
+        miPago.setIdAlquiler(3);//id de la casa
+        miPago.setFecha("10/4/2020");
+        miPago.setImporte(15000);
+        listado.add(miPago);
+
+        miPago.setIdPago(8);
+        miPago.setNroPago(3);
+        miPago.setIdAlquiler(3);//id de la casa
+        miPago.setFecha("10/5/2020");
         miPago.setImporte(15000);
         listado.add(miPago);
 
@@ -91,13 +138,14 @@ public class Pago {
         };
         return miPago;
     }
-    public Pago obtenerPorIdAlquiler(int id){
+    public ArrayList<Pago> obtenerPorIdAlquiler(int id){
         ArrayList<Pago> listado = new ArrayList<Pago>();
+        ArrayList<Pago> listadoPagos = new ArrayList<Pago>();
         Pago miPago=new Pago();
         for (Pago inqui : listado = TraerDatos()) {
             if(inqui.getIdAlquiler()==id)
-                miPago=inqui;
+                listadoPagos.add(inqui);
         };
-        return miPago;
+        return listadoPagos ;
     }
 }
