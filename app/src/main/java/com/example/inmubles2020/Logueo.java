@@ -30,25 +30,6 @@ public class Logueo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logueo);
         vm=new LogueoViewModel();
-
-        /*vm.getEtUsuario().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                etUsuario.setText(s);
-            }
-        });
-        vm.getEtPassword().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                etPassword.setText(s);
-            }
-        });
-        vm.getTvMensaje().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                tvMensaje.setText(s);
-            }
-        });*/
         iniciarVista();
     }
 
@@ -63,9 +44,7 @@ private void iniciarVista(){
                Boolean rta=vm.logueo(etUsuario.getText().toString(),etPassword.getText().toString());
                if(rta)
                {
-                   //miPropietario=miPropietario.devolverPropietario(correo);
                    Intent i=new Intent(Logueo.this, MainActivity.class);
-                 //  i.putExtra("usuario",miPropietario.getMail());
                    Logueo.this.startActivity(i);
                }
            }
