@@ -57,7 +57,7 @@ public class detalle_pagos extends Fragment {
         vm.cargarDatos(palabra);//lleva el id del inmueble alquilado
         tvMensaje=view.findViewById(R.id.etDireccionPagos);
         lv=view.findViewById(R.id.listaPagos);
-        lv.setClickable(true);
+        /*lv.setClickable(true);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -66,7 +66,7 @@ public class detalle_pagos extends Fragment {
                 bundle.putString("palabra",tv.getText().toString());
                 Navigation.findNavController(view).navigate(R.id.detalle_pagos, bundle);
             }
-        });
+        });*/
         return view;
     }
 }
