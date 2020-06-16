@@ -4,71 +4,94 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Propietarios {
-    private int idPropietario;
+    private int propietarioId;
     private int dni;
     private String nombre;
     private String apellido;
     private String telefono;
     private String mail;
-    private String password;
+    private String clave;
+    private int borrado;
 
-
+   //propietarioId-dni-nombre-apellido-telefono-mail-clave-borrado
     public Propietarios () { }
-    public Propietarios(int idPropietario, int dni, String nombre, String apellido, String telefono, String mail, String password)
-    {
-        this.idPropietario = idPropietario;
-        this.dni=dni;//no se puede cambiar
+
+    public Propietarios(int propietarioId, int dni, String nombre, String apellido, String telefono, String mail, String clave, int borrado) {
+        this.propietarioId = propietarioId;
+        this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.telefono = telefono;
         this.mail = mail;
-        this.password = password;
+        this.clave = clave;
+        this.borrado = borrado;
     }
-    public void setIdPropietario(int idPropietario) {
-        this.idPropietario=idPropietario;
+
+    public int getPropietarioId() {
+        return propietarioId;
     }
-    public int getIdPropietario() {
-        return idPropietario;
+
+    public void setPropietarioId(int propietarioId) {
+        this.propietarioId = propietarioId;
     }
-    public void setDni(int dni) {
-        this.dni=dni;
-    }
+
     public int getDni() {
         return dni;
     }
 
-    public void setNombre (String nombre) { this.nombre = nombre;    }
+    public void setDni(int dni) {
+        this.dni = dni;
+    }
+
     public String getNombre() {
         return nombre;
     }
 
-    public void setApellido (String apellido) {
-        this.apellido= apellido;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
+
     public String getApellido() {
         return apellido;
     }
 
-    public void setTelefono (String telefono){
-        this.telefono = telefono;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
+
     public String getTelefono() {
         return telefono;
     }
 
-    public void setMail (String mail)    {
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
         this.mail = mail;
     }
-    public String getMail() { return mail; }
 
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword (String password) {
-        this.password = password;
+
+    public String getClave() {
+        return clave;
     }
 
-    public List<Propietarios> listarPropietarios() {
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public int getBorrado() {
+        return borrado;
+    }
+
+    public void setBorrado(int borrado) {
+        this.borrado = borrado;
+    }
+    /* public List<Propietarios> listarPropietarios() {
         List<Propietarios> listaPropietario = new ArrayList<Propietarios>();
         Propietarios propietario = new Propietarios();
         propietario.idPropietario = 1;
@@ -182,7 +205,7 @@ public class Propietarios {
         {listado.add(p);}
 
 
-    }
+    }*/
   /*  public String modificarPropietario(Propietarios miPropietario)
     {
         String aux="";

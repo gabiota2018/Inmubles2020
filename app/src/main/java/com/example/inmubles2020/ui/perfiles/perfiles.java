@@ -1,10 +1,14 @@
 package com.example.inmubles2020.ui.perfiles;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +25,13 @@ public class perfiles extends Fragment {
     private EditText etDni,etApellido,etNombre,etTelefono,etMail,etPassword;
     private Button btnActualizar;
     private PerfilesViewModel vm;
-
+    private Propietarios miPropietario;
+   //propietarioId-dni-nombre-apellido-telefono-mail-password-borrado
     public perfiles() { }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        vm=new PerfilesViewModel();
+        vm= ViewModelProviders.of(this).get(PerfilesViewModel.class);
         vm.getApellido().observe(this, new Observer<String>() {
             @Override
             public void onChanged(String s) {
@@ -87,29 +92,41 @@ public class perfiles extends Fragment {
 
         });
         // String palabra=getArguments().getString("palabra");
-        vm.obtenerDatos(20200200);
+        vm.obtenerDatos();
         return view;
     }
 
        public void activar(View v){
-        vm.obtenerDatos(20200200);
-        if(btnActualizar.getText()=="EDITAR")
-        {etDni.setEnabled(true);
-        etApellido.setEnabled(true);
-        etNombre.setEnabled(true);
-        etTelefono.setEnabled(true);
-        etMail.setEnabled(true);
-        etPassword.setEnabled(true);
-        btnActualizar.setText("GUARDAR");}
-        else {
-        etDni.setEnabled(false);
-        etApellido.setEnabled(false);
-        etNombre.setEnabled(false);
-        etTelefono.setEnabled(false);
-        etMail.setEnabled(false);
-        etPassword.setEnabled(false);
-        btnActualizar.setText("EDITAR");
-        vm.obtenerDatos(20200200);
+           vm.obtenerDatos();
+            if(btnActualizar.getText()=="EDITAR")
+            {
+                etDni.setEnabled(true);
+                etApellido.setEnabled(true);
+                etNombre.setEnabled(true);
+                etTelefono.setEnabled(true);
+                etMail.setEnabled(true);
+                etPassword.setEnabled(true);
+                btnActualizar.setText("GUARDAR");
+            }
+            else {
+                etDni.setEnabled(false);
+                etApellido.setEnabled(false);
+                etNombre.setEnabled(false);
+                etTelefono.setEnabled(false);
+                etMail.setEnabled(false);
+                etPassword.setEnabled(false);
+                actualizar();
+                btnActualizar.setText("EDITAR");
+                vm.obtenerDatos();
+            }
+       }
+        public void actualizar(){
+                vm.getPropietarioMutableLiveData().observe(this, new Observer<Propietarios>() {
+                    @Override
+                    public void onChanged(Propietarios propietarios) {
+                    miPropietario=propietarios;
+                    vm.actualizar(miPropietario);
+                    }
+                });
         }
-   }
 }

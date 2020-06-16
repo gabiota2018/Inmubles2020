@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.example.inmubles2020.ui.perfiles.Propietarios;
 
@@ -21,7 +23,7 @@ public class Logueo extends AppCompatActivity {
     private EditText etUsuario;
     private EditText etPassword;
     private Button btnEnviar;
-    private TextView tvMensaje;
+    private TextView tvMensajeLogueo;
     private LogueoViewModel vm;
    //private Propietarios miPropietario;
 
@@ -29,26 +31,36 @@ public class Logueo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logueo);
-        vm=new LogueoViewModel();
+        vm= ViewModelProviders.of(this).get(LogueoViewModel.class);
         iniciarVista();
     }
 
 private void iniciarVista(){
         etUsuario=findViewById(R.id.etMailLogueo);
         etPassword=findViewById(R.id.etPasswordLogueo);
-        tvMensaje=findViewById(R.id.tvMensajeLogueo);
+        tvMensajeLogueo=findViewById(R.id.tvMensajeLogueo);
         btnEnviar=findViewById(R.id.btnEnviarLogueo);
         btnEnviar.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Boolean rta=vm.logueo(etUsuario.getText().toString(),etPassword.getText().toString());
-               if(rta)
-               {
-                   Intent i=new Intent(Logueo.this, MainActivity.class);
-                   Logueo.this.startActivity(i);
-               }
-           }
-       });
-}
+        @Override
+        public void onClick(View view) {
+            vm.logueo(etUsuario.getText().toString(),etPassword.getText().toString());
+        }
+        });
+        vm.getTvMensajeLogueo().observe(this, new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer integer) {
+                tvMensajeLogueo.setVisibility(integer);
+            }
+        });
+        vm.getToken().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Intent i=new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+    }
 
 }
+
