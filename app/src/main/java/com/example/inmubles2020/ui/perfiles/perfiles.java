@@ -27,6 +27,7 @@ public class perfiles extends Fragment {
     private PerfilesViewModel vm;
     private Propietarios miPropietario;
    //propietarioId-dni-nombre-apellido-telefono-mail-password-borrado
+
     public perfiles() { }
     @Override
     public void onCreate(Bundle savedInstanceState) {

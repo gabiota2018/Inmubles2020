@@ -24,6 +24,7 @@ public class detalle_propiedades extends Fragment {
     private EditText etPrecioP;
     private CheckBox cbDisponibleP;
     private Button btnGuardarP;
+    private Button btnGuardarP2;
     private detallePropiedaesViewModel vm;
 
     public detalle_propiedades() {}
@@ -80,9 +81,20 @@ public class detalle_propiedades extends Fragment {
         etTipoP=view.findViewById(R.id.etTipoP);
         etUsoP=view.findViewById(R.id.etUsoP);
         cbDisponibleP=view.findViewById(R.id.cbDisponibleP);
-       btnGuardarP=view.findViewById(R.id.btnGuardarP);
+        btnGuardarP=view.findViewById(R.id.btnGuardarP);
+        btnGuardarP2=view.findViewById(R.id.btnGuardarP2);
         String palabra=getArguments().getString("palabra");
-        vm.obtenerDatosInmuebles(palabra);
+
+       vm.obtenerDatosInmuebles(palabra);
+       btnGuardarP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int disponer=0;
+                if(cbDisponibleP.isChecked())disponer=1;
+                vm.actualizar(etDireccionP.getText().toString(),etAmbiente.getText().toString(),etPrecioP.getText().toString(),etTipoP.getText().toString(),etUsoP.getText().toString(),disponer,palabra);
+            }
+        });
         return view;
     }
+
 }
