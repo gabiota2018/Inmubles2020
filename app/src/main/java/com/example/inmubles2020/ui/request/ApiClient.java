@@ -61,8 +61,7 @@ public class ApiClient {
         @PUT("propietario/{id}")
         Call<Propietarios> actualizar(@Header("Authorization")String token, @Path("id") int groupId,@Field("Dni") int dni, @Field("Nombre")String nombre, @Field("Apellido") String apellido, @Field("Telefono")String telefono, @Field("Mail")String mail, @Field("Clave")String clave, @Field("Borrado") int borrado);
 
-        //---------------------------------Inmuebles------------------------------------------------
-
+       
         @GET("Inmuebles")
         Call<List<Inmuebles>> listarInmuebles(@Header("Authorization") String token);
 
