@@ -25,7 +25,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public class ApiClient {
-    private static final String PATH="http://www.secsanluis.com.ar/servicios/varios/bungalows/model/";
+    private static final String PATH="http://localhost:64912/api/";
     private static  MyApiInterface myApiInteface;
     private static String accessToken=null;
 
