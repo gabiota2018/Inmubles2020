@@ -61,7 +61,7 @@ public class ApiClient {
         @PUT("propietario/{id}")
         Call<Propietarios> actualizar(@Header("Authorization")String token, @Path("id") int groupId,@Field("Dni") int dni, @Field("Nombre")String nombre, @Field("Apellido") String apellido, @Field("Telefono")String telefono, @Field("Mail")String mail, @Field("Clave")String clave, @Field("Borrado") int borrado);
 
-       
+
         @GET("Inmuebles")
         Call<List<Inmuebles>> listarInmuebles(@Header("Authorization") String token);
 
@@ -71,27 +71,10 @@ public class ApiClient {
         @PUT("Inmueble/{id}")
         Call<Inmuebles> actualizarInmueble(@Header("Authorization") String token, @Path("id") int id, @Body Inmuebles inmueble);
 
-        @POST("inmueble")
+        @POST("Inmueble")
         Call<Inmuebles> guardarInmueble(@Header("Authorization") String token, @Body Inmuebles inmueble);
 
-        // propietarioId-dni-nombre-apellido-telefono-mail-password-borrado
 
-
-        // @GET("propietario")
-        //Call<Propietario> leer(@Header("Authorization")String token);
-
-        // @FormUrlEncoded
-        // @PUT("propietario/{id}")
-        //Call<Propietario> actualizar(@Header("Authorization")String token, @Path("id") int groupId, @Field("Nombre")String nombre,@Field("Apellido") String apellido,@Field("Dni") int dni,@Field("Correo")String correo,@Field("Clave")String clave,@Field("EstadoPropietario") int estado,@Field("Telefono")long telefono);
-        // @GET("test")
-        // Call<Data> leer();
-
-        //listarClientes.php
-        //@GET("listarClientes.php")
-        //Call<List<Cliente>> getClientes();
-
-        //@GET("insertarClientes.php")
-        //Call<Cliente> createCliente(@Query("dni") int dni, @Query("apellido") String apellido, @Query("nombre") String nombre);
     }
 
 }
