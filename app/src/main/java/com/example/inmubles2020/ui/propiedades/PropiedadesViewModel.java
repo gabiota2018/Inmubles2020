@@ -2,6 +2,7 @@ package com.example.inmubles2020.ui.propiedades;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PropiedadesViewModel extends ViewModel {
     private MutableLiveData<List<String>> listaDeInmuebles;
@@ -30,12 +33,35 @@ public class PropiedadesViewModel extends ViewModel {
     public void cargarDatos(){
 
         ArrayList<Inmuebles> todos=new ArrayList<Inmuebles>();
-        ArrayList<String> listado=new ArrayList<String>();
-
+        //ArrayList<String> listado=new ArrayList<String>();
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
-        Call<Propietarios> propietarioCall= ApiClient.getMyApiClient().obtenerDatos(accessToken);
+        Call<List<Inmuebles>> listaInmueblesCall = ApiClient.getMyApiClient().listarInmuebles(accessToken);
+        listaInmueblesCall.enqueue(new Callback<List<Inmuebles>>() {
+            @Override
+            public void onResponse(Call<List<Inmuebles>> call, Response<List<Inmuebles>> response) {
+                if(response.isSuccessful()){
+                    List<Inmuebles> todos= response.body();
+                    ArrayList<String> listado=new ArrayList<String>();
+                    String cadena="";
+                    for (Inmuebles s: todos) {
+                        cadena="";
+                        cadena=s.getIdInmueble()+"-"+s.getDireccion()+" ";
+                            listado.add(cadena);
+                       }
+                    listaDeInmuebles.postValue(listado);
 
-        listaDeInmuebles.setValue(listado);
+                } else {
+                    Toast.makeText(context, "Error.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Inmuebles>> call, Throwable t) {
+
+            }
+        });
+
+        
     }
 }
