@@ -1,9 +1,12 @@
 package com.example.inmubles2020.ui.propiedades;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -19,9 +22,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PropiedadesViewModel extends ViewModel {
+public class PropiedadesViewModel extends AndroidViewModel {
     private MutableLiveData<List<String>> listaDeInmuebles;
     private Context context;
+
+    public PropiedadesViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public LiveData<List<String>> getListaDeInmuebles() {
         if(listaDeInmuebles==null){
@@ -33,7 +40,6 @@ public class PropiedadesViewModel extends ViewModel {
     public void cargarDatos(){
 
         ArrayList<Inmuebles> todos=new ArrayList<Inmuebles>();
-        //ArrayList<String> listado=new ArrayList<String>();
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
         Call<List<Inmuebles>> listaInmueblesCall = ApiClient.getMyApiClient().listarInmuebles(accessToken);
@@ -61,7 +67,6 @@ public class PropiedadesViewModel extends ViewModel {
 
             }
         });
-
-        
     }
+
 }

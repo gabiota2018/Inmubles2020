@@ -1,8 +1,12 @@
 package com.example.inmubles2020.ui.propiedades;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -17,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class detallePropiedaesViewModel extends ViewModel {
+public class detallePropiedaesViewModel extends AndroidViewModel {
 
     private MutableLiveData<String> etDireccionP;
     private MutableLiveData<String> etAmbienteP;
@@ -26,6 +30,10 @@ public class detallePropiedaesViewModel extends ViewModel {
     private MutableLiveData<String> etPrecioP;
     private MutableLiveData<Boolean> cbDisponibleP;
     private Context context;
+
+    public detallePropiedaesViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     public LiveData<String> etDireccionP() {
         if(etDireccionP==null){
@@ -99,20 +107,22 @@ public class detallePropiedaesViewModel extends ViewModel {
 
 
     }
-    public  void actualizar(String direccion,int ambientes,double precio,String tipo,String uso, int disponer,String palabra){
-        String[] partes = palabra.split("-");
-        //queda el Id del inmueble en part1
-        Integer part1 =Integer. parseInt(partes[0]);
-        Inmuebles miInmueble=new Inmuebles();
-        miInmueble.setIdInmueble(part1);
+    public  void actualizar(String direccion,String ambientes,String precio,String tipo,String uso, int disponer,int id){
+       Inmuebles miInmueble=new Inmuebles();
+        miInmueble.setIdInmueble(id);
         miInmueble.setDireccion(direccion);
-        miInmueble.setAmbientes(ambientes);
+        miInmueble.setAmbientes(Integer.parseInt(ambientes));
         miInmueble.setTipo(tipo);
         miInmueble.setUso(uso);
-        miInmueble.setPrecio(precio);
+        miInmueble.setPrecio(Double.parseDouble(precio));
 
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
-        Call<Inmuebles> res = ApiClient.getMyApiClient().actualizarInmueble(accessToken,part1,miInmueble);
+        Call<Inmuebles> nuevo = ApiClient.getMyApiClient().actualizarInmueble(accessToken,id,miInmueble);
+    }
+    public  void borrar(int id){
+        SharedPreferences sp=context.getSharedPreferences("token",0);
+        String accessToken=sp.getString("token","");
+        Call<Inmuebles> inmueblesCall = ApiClient.getMyApiClient().bajaInmueble(accessToken,id);
     }
 }

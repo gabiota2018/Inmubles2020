@@ -37,7 +37,6 @@ public class perfiles extends Fragment {
             @Override
             public void onChanged(String s) {
                 etApellido.setText(s);
-
             }
         });
         vm.getDni().observe(this, new Observer<String>() {
@@ -85,13 +84,7 @@ public class perfiles extends Fragment {
         etMail=view.findViewById(R.id.etMail);
         etPassword=view.findViewById(R.id.etPassword);
         btnActualizar=view.findViewById(R.id.btnActualizarPerfil);
-        btnActualizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activar(view);
-            }
 
-        });
         // String palabra=getArguments().getString("palabra");
         vm.obtenerDatos();
         return view;

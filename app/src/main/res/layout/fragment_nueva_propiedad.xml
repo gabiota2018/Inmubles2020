@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/etDireccionP"
+        android:id="@+id/etDireccionNu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etAmbientesP"
+        android:id="@+id/etAmbientesNu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -38,10 +38,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDireccionP" />
+        app:layout_constraintTop_toBottomOf="@+id/etDireccionNu" />
 
     <EditText
-        android:id="@+id/etTipoP"
+        android:id="@+id/etTipoNu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -55,10 +55,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etAmbientesP" />
+        app:layout_constraintTop_toBottomOf="@+id/etAmbientesNu" />
 
     <EditText
-        android:id="@+id/etUsoP"
+        android:id="@+id/etUsoNu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -72,10 +72,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTipoP" />
+        app:layout_constraintTop_toBottomOf="@+id/etTipoNu" />
 
     <EditText
-        android:id="@+id/etPrecioP"
+        android:id="@+id/etPrecioNu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -88,26 +88,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsoP" />
+        app:layout_constraintTop_toBottomOf="@+id/etUsoNu" />
 
     <CheckBox
-        android:id="@+id/cbDisponibleP"
+        android:id="@+id/cbDisponibleNu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="350dp"
         android:text="Disponible"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPrecioP"
+        app:layout_constraintTop_toBottomOf="@+id/etPrecioNu"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnGuardarP"
+        android:id="@+id/btnAgregarNu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="410dp"
-        android:text="EDITAR"
+        android:text="GUARDAR"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
@@ -115,18 +115,5 @@
         app:layout_constraintTop_toBottomOf="@+id/cbDisponibleP"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnGuardarP2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="470dp"
-        android:text="ELIMINAR"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGuardarP"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </FrameLayout>

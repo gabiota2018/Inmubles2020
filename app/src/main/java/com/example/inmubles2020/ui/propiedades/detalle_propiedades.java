@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.inmubles2020.R;
+import com.example.inmubles2020.ui.perfiles.PerfilesViewModel;
 
 
 public class detalle_propiedades extends Fragment {
@@ -31,7 +33,8 @@ public class detalle_propiedades extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       vm=new detallePropiedaesViewModel();
+       //vm=new detallePropiedaesViewModel();
+        vm= vm= ViewModelProviders.of(this).get(detallePropiedaesViewModel.class);
        vm.etDireccionP().observe(this, new Observer<String>() {
            @Override
            public void onChanged(String s) {
@@ -83,15 +86,23 @@ public class detalle_propiedades extends Fragment {
         cbDisponibleP=view.findViewById(R.id.cbDisponibleP);
         btnGuardarP=view.findViewById(R.id.btnGuardarP);
         btnGuardarP2=view.findViewById(R.id.btnGuardarP2);
-        String palabra=getArguments().getString("palabra");
-
+        final String palabra=getArguments().getString("palabra");
+        String[] partes = palabra.split("-");
+        //queda el Id del inmueble en part1
+        final int part1 =Integer. parseInt(partes[0]);
        vm.obtenerDatosInmuebles(palabra);
        btnGuardarP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 int disponer=0;
                 if(cbDisponibleP.isChecked())disponer=1;
-                vm.actualizar(etDireccionP.getText().toString(),etAmbiente.getText().toString(),etPrecioP.getText().toString(),etTipoP.getText().toString(),etUsoP.getText().toString(),disponer,palabra);
+                vm.actualizar(etDireccionP.getText().toString(),etAmbiente.getText().toString(),etPrecioP.getText().toString(),etTipoP.getText().toString(),etUsoP.getText().toString(),disponer,part1);
+            }
+        });
+        btnGuardarP2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            vm.borrar(part1);
             }
         });
         return view;

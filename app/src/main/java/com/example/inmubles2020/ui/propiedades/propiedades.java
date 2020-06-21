@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -11,11 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.inmubles2020.R;
 import com.example.inmubles2020.ui.inquilino.InquilinoViewModel;
+import com.example.inmubles2020.ui.perfiles.PerfilesViewModel;
 
 import java.util.List;
 
@@ -23,14 +26,14 @@ import java.util.List;
 public class propiedades extends Fragment {
     private ListView lv;
     private PropiedadesViewModel vm;
-
+    private Button btnAgregar;
     public propiedades() {}
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        vm=new PropiedadesViewModel();
-
+        //vm=new PropiedadesViewModel();
+        vm=ViewModelProviders.of(this).get(PropiedadesViewModel.class);
         vm.getListaDeInmuebles().observe(this,new Observer<List<String>>() {
             @Override
             public void onChanged(List<String> strings) {
@@ -44,6 +47,7 @@ public class propiedades extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_propiedades, container, false);
+        btnAgregar=view.findViewById(R.id.btnAgregar);
         vm.cargarDatos();
         lv=view.findViewById(R.id.listaPropiedades);
         lv.setClickable(true);
@@ -55,6 +59,13 @@ public class propiedades extends Fragment {
                 bundle.putString("palabra",tv.getText().toString());
                 Navigation.findNavController(view).navigate(R.id.detalle_propiedades, bundle);
             }
+        });
+        btnAgregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle=new Bundle();
+                Navigation.findNavController(view).navigate(R.id.nueva_propiedad,bundle);
+      }
         });
         return view;
     }

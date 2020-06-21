@@ -36,6 +36,9 @@
         <action
             android:id="@+id/action_propiedades_to_detalle_propiedades"
             app:destination="@id/detalle_propiedades" />
+        <action
+            android:id="@+id/action_propiedades_to_nueva_propiedad"
+            app:destination="@id/nueva_propiedad" />
     </fragment>
     <fragment
         android:id="@+id/detalle_propiedades"
@@ -92,5 +95,14 @@
         android:name="com.example.inmubles2020.ui.perfiles.perfiles"
         android:label="Perfil Usuario"
         tools:layout="@layout/fragment_perfiles" />
+    <fragment
+        android:id="@+id/nueva_propiedad"
+        android:name="com.example.inmubles2020.nueva_propiedad"
+        android:label="fragment_nueva_propiedad2"
+        tools:layout="@layout/fragment_nueva_propiedad" >
+        <action
+            android:id="@+id/action_nueva_propiedad_to_propiedades"
+            app:destination="@id/propiedades" />
+    </fragment>
 
 </navigation>
