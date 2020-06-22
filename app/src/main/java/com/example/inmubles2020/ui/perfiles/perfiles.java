@@ -27,21 +27,15 @@ public class perfiles extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        vm= ViewModelProviders.of(this).get(PerfilesViewModel.class);
-        vm.getPropietarioMutableLiveData().observe(this, new Observer<Propietario>() {
-            @Override
-            public void onChanged(Propietario propietario) {
-                miPropietario=propietario;
-                vm.obtenerDatos();
-            }
-        });
+
 
 
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
+        vm= ViewModelProviders.of(this).get(PerfilesViewModel.class);
         View view=inflater.inflate(R.layout.fragment_perfiles, container, false);
         etDni=view.findViewById(R.id.etDni);
         etApellido=view.findViewById(R.id.etApellido);
@@ -50,6 +44,19 @@ public class perfiles extends Fragment {
         etMail=view.findViewById(R.id.etMail);
         etPassword=view.findViewById(R.id.etPassword);
         btnActualizar=view.findViewById(R.id.btnActualizarPerfil);
+        vm.getPropietarioMutableLiveData().observe(this, new Observer<Propietario>() {
+            @Override
+            public void onChanged(Propietario propietario) {
+               etDni.setText(propietario.getDni());
+               etApellido.setText(propietario.getApellido());
+               etNombre.setText(propietario.getNombre());
+               etTelefono.setText(propietario.getTelefono());
+               etMail.setText(propietario.getMail());
+               etPassword.setText(propietario.getClave());
+
+               
+            }
+        });
 
         // String palabra=getArguments().getString("palabra");
         vm.obtenerDatos();
