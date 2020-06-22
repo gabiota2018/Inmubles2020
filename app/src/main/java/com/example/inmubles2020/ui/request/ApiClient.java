@@ -35,11 +35,9 @@ public class ApiClient {
 
 
         Gson gson = new GsonBuilder().setLenient().create();
-        OkHttpClient.Builder client = new OkHttpClient.Builder();
 
         Retrofit retrofit=new Retrofit.Builder()
                 .baseUrl(PATH)
-                .client(client.build())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
 
