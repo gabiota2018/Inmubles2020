@@ -27,7 +27,13 @@ public class perfiles extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         vm= ViewModelProviders.of(this).get(PerfilesViewModel.class);
-       
+        vm.getPropietarioMutableLiveData().observe(this, new Observer<Propietario>() {
+            @Override
+            public void onChanged(Propietario propietario) {
+
+            }
+        });
+     
 
     }
 
