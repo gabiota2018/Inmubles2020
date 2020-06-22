@@ -30,10 +30,10 @@ public class perfiles extends Fragment {
         vm.getPropietarioMutableLiveData().observe(this, new Observer<Propietario>() {
             @Override
             public void onChanged(Propietario propietario) {
-
+                miPropietario=propietario;
             }
         });
-     
+
 
     }
 
