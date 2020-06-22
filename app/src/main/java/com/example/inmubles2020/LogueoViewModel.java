@@ -10,6 +10,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.inmubles2020.ui.Usuario;
 import com.example.inmubles2020.ui.request.ApiClient;
 
 import retrofit2.Call;
@@ -56,7 +57,10 @@ public class LogueoViewModel extends AndroidViewModel {
 
     public  void logueo(String usuario,String clave) {
         boolean rta = false;
-        Call<String> dato = ApiClient.getMyApiClient().login(usuario, clave);
+        Usuario user=new Usuario(usuario,clave);
+
+        Call<String> dato = ApiClient.getMyApiClient().login(user);
+
         dato.enqueue((new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

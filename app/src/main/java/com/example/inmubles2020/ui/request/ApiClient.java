@@ -2,7 +2,8 @@ package com.example.inmubles2020.ui.request;
 
 import android.util.Log;
 
-import com.example.inmubles2020.ui.perfiles.Propietarios;
+import com.example.inmubles2020.ui.Usuario;
+import com.example.inmubles2020.ui.perfiles.Propietario;
 import com.example.inmubles2020.ui.propiedades.Inmuebles;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,7 +26,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public class ApiClient {
-    private static final String PATH="http://localhost:64912/api/";
+    private static final String PATH="http://192.168.56.1:45455/api/";
     private static  MyApiInterface myApiInteface;
     private static String accessToken=null;
 
@@ -48,15 +49,20 @@ public class ApiClient {
     }
 
     public interface MyApiInterface {
+
         @POST("propietarios/login")
-        Call<String> login(@Query("Correo")String usuario, @Query("Clave")String clave);
+        Call<String> login(@Body Usuario user);
+
+       // @POST("propietarios/login")
+       // Call<String> login(@Query("Correo")String Usuario, @Query("Clave")String Clave);
 
         @GET("propietarios")
-        Call<Propietarios> obtenerDatos(@Header("Authorization")String token);
+        Call<Propietario> obtenerDatos(@Header("Authorization")String token);
 
         @FormUrlEncoded
-        @PUT("propietario/{id}")
-        Call<Propietarios> actualizar(@Header("Authorization")String token, @Path("id") int groupId,@Field("Dni") int dni, @Field("Nombre")String nombre, @Field("Apellido") String apellido, @Field("Telefono")String telefono, @Field("Mail")String mail, @Field("Clave")String clave, @Field("Borrado") int borrado);
+        @PUT("propietarios/{id}")
+       // Call<Propietario> actualizar(@Header("Authorization")String token, @Path("id") int groupId, @Field("Dni") int dni, @Field("Nombre")String nombre, @Field("Apellido") String apellido, @Field("Telefono")String telefono, @Field("Mail")String mail, @Field("Clave")String clave, @Field("Borrado") int borrado);
+Call<Propietario> actualizar(@Header("Authorization")String token,@Body Propietario p);
 
         @GET("Inmuebles")
         Call<List<Inmuebles>> listarInmuebles(@Header("Authorization") String token);

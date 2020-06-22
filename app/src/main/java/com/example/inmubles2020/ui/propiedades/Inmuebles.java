@@ -1,9 +1,6 @@
 package com.example.inmubles2020.ui.propiedades;
 
 
-import com.example.inmubles2020.ui.perfiles.Propietarios;
-
-
 import java.util.ArrayList;
 
 

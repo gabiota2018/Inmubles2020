@@ -3,7 +3,7 @@ package com.example.inmubles2020.ui.perfiles;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Propietarios {
+public class Propietario {
     private int propietarioId;
     private int dni;
     private String nombre;
@@ -14,9 +14,9 @@ public class Propietarios {
     private int borrado;
 
    //propietarioId-dni-nombre-apellido-telefono-mail-clave-borrado
-    public Propietarios () { }
+    public Propietario() { }
 
-    public Propietarios(int propietarioId, int dni, String nombre, String apellido, String telefono, String mail, String clave, int borrado) {
+    public Propietario(int propietarioId, int dni, String nombre, String apellido, String telefono, String mail, String clave, int borrado) {
         this.propietarioId = propietarioId;
         this.dni = dni;
         this.nombre = nombre;

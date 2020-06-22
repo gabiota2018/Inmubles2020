@@ -1,11 +1,6 @@
 package com.example.inmubles2020.ui.contratos;
 
-import com.example.inmubles2020.ui.perfiles.Propietarios;
-import com.example.inmubles2020.ui.propiedades.Inmuebles;
-import com.example.inmubles2020.ui.inquilino.Inquilinos;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Alquileres {
     private  int idAlquiler;

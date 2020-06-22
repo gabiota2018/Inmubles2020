@@ -9,10 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-import com.example.inmubles2020.ui.inquilino.Inquilinos;
-import com.example.inmubles2020.ui.perfiles.Propietarios;
 import com.example.inmubles2020.ui.request.ApiClient;
 
 import java.util.ArrayList;

@@ -3,7 +3,6 @@ package com.example.inmubles2020.ui.perfiles;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.text.Editable;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -11,12 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.inmubles2020.ui.request.ApiClient;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,14 +24,14 @@ public class PerfilesViewModel extends AndroidViewModel {
     private MutableLiveData<String> telefono;
     private MutableLiveData<String> mail;
     private MutableLiveData<String> password;
-    private MutableLiveData<Propietarios> propietarioMutableLiveData;
+    private MutableLiveData<Propietario> propietarioMutableLiveData;
     private Context context;
 
     public PerfilesViewModel(@NonNull Application application) {
         super(application);
         context=application.getApplicationContext();
     }
-    public LiveData<Propietarios> getPropietarioMutableLiveData(){
+    public LiveData<Propietario> getPropietarioMutableLiveData(){
         if(propietarioMutableLiveData==null){
             propietarioMutableLiveData=new MutableLiveData<>();
         }
@@ -83,12 +78,12 @@ public class PerfilesViewModel extends AndroidViewModel {
     public void obtenerDatos(){
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
-        Call<Propietarios> propietarioCall= ApiClient.getMyApiClient().obtenerDatos(accessToken);
-        propietarioCall.enqueue(new Callback<Propietarios>() {
+        Call<Propietario> propietarioCall= ApiClient.getMyApiClient().obtenerDatos(accessToken);
+        propietarioCall.enqueue(new Callback<Propietario>() {
             @Override
-            public void onResponse(Call<Propietarios> call, Response<Propietarios> response) {
+            public void onResponse(Call<Propietario> call, Response<Propietario> response) {
                 if(response.isSuccessful()){
-                    Propietarios miPropietario=response.body();
+                    Propietario miPropietario=response.body();
                     apellido.setValue(miPropietario.getApellido());
                     dni.setValue("DNI: "+miPropietario.getDni()+"");
                     nombre.setValue(miPropietario.getNombre());
@@ -100,20 +95,20 @@ public class PerfilesViewModel extends AndroidViewModel {
             }
 
             @Override
-            public void onFailure(Call<Propietarios> call, Throwable t) {
+            public void onFailure(Call<Propietario> call, Throwable t) {
 
             }
         });
     }
 
 
-public void actualizar(Propietarios propietario){
+public void actualizar(Propietario propietario){
     SharedPreferences sp=context.getSharedPreferences("token",0);
     String accessToken=sp.getString("token","");
-    Call<Propietarios> propietarioActualizado= ApiClient.getMyApiClient().actualizar(accessToken, propietario.getPropietarioId(),propietario.getDni(),propietario.getNombre(),propietario.getApellido(),propietario.getTelefono(),propietario.getMail(),propietario.getClave(),propietario.getBorrado());
-    propietarioActualizado.enqueue(new Callback<Propietarios>() {
+    Call<Propietario> propietarioActualizado= ApiClient.getMyApiClient().actualizar(accessToken, propietario);
+    propietarioActualizado.enqueue(new Callback<Propietario>() {
         @Override
-        public void onResponse(Call<Propietarios> call, Response<Propietarios> response) {
+        public void onResponse(Call<Propietario> call, Response<Propietario> response) {
             Log.d("salida","por actualizar");
             if(response.isSuccessful()){
                 Toast.makeText(getApplication(),"Datos actualizados",Toast.LENGTH_LONG).show();
@@ -121,7 +116,7 @@ public void actualizar(Propietarios propietario){
         }
 
         @Override
-        public void onFailure(Call<Propietarios> call, Throwable t) {
+        public void onFailure(Call<Propietario> call, Throwable t) {
 
         }
     });
