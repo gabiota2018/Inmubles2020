@@ -13,13 +13,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.inmubles2020.R;
+import com.example.inmubles2020.ui.Usuario;
 
 
 public class perfiles extends Fragment {
     private EditText etDni,etApellido,etNombre,etTelefono,etMail,etPassword;
     private Button btnActualizar;
     private PerfilesViewModel vm;
-    private Propietario miPropietario;
+    private Propietario miPropietario=null;
    //propietarioId-dni-nombre-apellido-telefono-mail-password-borrado
 
     public perfiles() { }
@@ -31,6 +32,7 @@ public class perfiles extends Fragment {
             @Override
             public void onChanged(Propietario propietario) {
                 miPropietario=propietario;
+                vm.obtenerDatos();
             }
         });
 
