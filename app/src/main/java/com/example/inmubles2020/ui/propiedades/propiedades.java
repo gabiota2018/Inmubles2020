@@ -60,13 +60,8 @@ public class propiedades extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.detalle_propiedades, bundle);
             }
         });
-        btnAgregar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle=new Bundle();
-                Navigation.findNavController(view).navigate(R.id.nueva_propiedad,bundle);
-      }
-        });
+
+
         return view;
     }
 }

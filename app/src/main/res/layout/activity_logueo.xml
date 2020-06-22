@@ -8,27 +8,27 @@
     tools:context=".Logueo">
 
 
-
-
     <EditText
         android:id="@+id/etMailLogueo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
         android:layout_marginTop="10dp"
-        android:textSize="25dp"
         android:hint="Usuario"
-        android:textAlignment="center"/>
+        android:inputType="textPersonName"
+        android:text="beto@gmail.com"
+        android:textAlignment="center"
+        android:textSize="25dp" />
 
     <EditText
         android:id="@+id/etPasswordLogueo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
         android:layout_marginTop="5dp"
-        android:textSize="25dp"
+        android:hint="Password"
         android:inputType="textPassword"
-        android:textAlignment="center"/>
+        android:text="123"
+        android:textAlignment="center"
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btnEnviarLogueo"

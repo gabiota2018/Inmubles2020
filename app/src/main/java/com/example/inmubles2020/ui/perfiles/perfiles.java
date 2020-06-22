@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,10 +28,7 @@ public class perfiles extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
-    }
+ }
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
@@ -44,6 +42,14 @@ public class perfiles extends Fragment {
         etMail=view.findViewById(R.id.etMail);
         etPassword=view.findViewById(R.id.etPassword);
         btnActualizar=view.findViewById(R.id.btnActualizarPerfil);
+
+        etDni.setEnabled(true);
+        etApellido.setEnabled(true);
+        etNombre.setEnabled(true);
+        etTelefono.setEnabled(true);
+        etMail.setEnabled(true);
+        etPassword.setEnabled(true);
+
         vm.getPropietarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
             @Override
             public void onChanged(Propietario propietario) {
@@ -53,17 +59,21 @@ public class perfiles extends Fragment {
                etTelefono.setText(propietario.getTelefono());
                etMail.setText(propietario.getMail());
                etPassword.setText(propietario.getClave());
-
-
+          }
+        });
+        btnActualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activar();
+                actualizar();
             }
         });
              vm.obtenerDatos();
         return view;
     }
 
-       public void activar(View v){
-
-            if(btnActualizar.getText()!="EDITAR")
+       public void activar(){
+          if(btnActualizar.getText()=="EDITAR")
             {
                 etDni.setEnabled(true);
                 etApellido.setEnabled(true);
@@ -82,11 +92,33 @@ public class perfiles extends Fragment {
                 etPassword.setEnabled(false);
                 actualizar();
                 btnActualizar.setText("EDITAR");
-
             }
        }
+
+      /* public  void activar(View v){
+           if(btnActualizar.getText()=="EDITAR")
+           {
+               etDni.setEnabled(true);
+               etApellido.setEnabled(true);
+               etNombre.setEnabled(true);
+               etTelefono.setEnabled(true);
+               etMail.setEnabled(true);
+               etPassword.setEnabled(true);
+               btnActualizar.setText("GUARDAR");
+           }
+           else {
+               etDni.setEnabled(false);
+               etApellido.setEnabled(false);
+               etNombre.setEnabled(false);
+               etTelefono.setEnabled(false);
+               etMail.setEnabled(false);
+               etPassword.setEnabled(false);
+               actualizar();
+               btnActualizar.setText("EDITAR");
+           }
+       }*/
         public void actualizar(){
-                vm.getPropietarioMutableLiveData().observe(this, new Observer<Propietario>() {
+                vm.getPropietarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
                     @Override
                     public void onChanged(Propietario propietarios) {
                     miPropietario=propietarios;
