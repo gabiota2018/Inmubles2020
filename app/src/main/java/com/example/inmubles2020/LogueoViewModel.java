@@ -69,7 +69,7 @@ public class LogueoViewModel extends AndroidViewModel {
                     token.postValue(response.body());
                     SharedPreferences sp = context.getSharedPreferences("token", 0);
                     SharedPreferences.Editor editor = sp.edit();
-                    String t = "Bearer" + response.body();
+                    String t = "Bearer " + response.body();
                     editor.putString("token", t);
                     editor.commit();
                     Log.d("salida ultimo token", t);

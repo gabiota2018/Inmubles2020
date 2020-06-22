@@ -26,7 +26,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public class ApiClient {
-    private static final String PATH="http://192.168.56.1:45455/api/";
+    private static final String PATH="http://192.168.0.15:45455/api/";
     private static  MyApiInterface myApiInteface;
     private static String accessToken=null;
 

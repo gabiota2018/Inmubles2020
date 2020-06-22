@@ -18,13 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PerfilesViewModel extends AndroidViewModel {
-    private MutableLiveData<String> dni;
-    private MutableLiveData<String> apellido;
-    private MutableLiveData<String> nombre;
-    private MutableLiveData<String> telefono;
-    private MutableLiveData<String> mail;
-    private MutableLiveData<String> password;
-    private MutableLiveData<Propietario> propietarioMutableLiveData;
+   private MutableLiveData<Propietario> propietarioMutableLiveData;
     private Context context;
 
     public PerfilesViewModel(@NonNull Application application) {
@@ -37,43 +31,6 @@ public class PerfilesViewModel extends AndroidViewModel {
         }
         return propietarioMutableLiveData;
     }
-   public LiveData<String> getDni() {
-        if(dni==null){
-            dni=new MutableLiveData<>();
-        }
-        return dni;
-    }
-
-    public LiveData<String> getApellido() {
-        if(apellido==null){
-            apellido=new MutableLiveData<>();
-        }
-        return apellido;
-    }
-    public LiveData<String> getNombre() {
-        if(nombre==null){
-           nombre=new MutableLiveData<>();
-        }
-        return nombre;
-    }
-    public LiveData<String> getTelefono() {
-        if(telefono==null){
-           telefono=new MutableLiveData<>();
-        }
-        return telefono;
-    }
-    public LiveData<String> getMail() {
-        if(mail==null){
-           mail=new MutableLiveData<>();
-        }
-        return mail;
-    }
-    public LiveData<String> getPassword() {
-        if(password==null){
-           password=new MutableLiveData<>();
-        }
-        return password;
-    }
 
     public void obtenerDatos(){
         SharedPreferences sp=context.getSharedPreferences("token",0);
@@ -83,14 +40,7 @@ public class PerfilesViewModel extends AndroidViewModel {
             @Override
             public void onResponse(Call<Propietario> call, Response<Propietario> response) {
                 if(response.isSuccessful()){
-                    Propietario miPropietario=response.body();
-                    apellido.setValue(miPropietario.getApellido());
-                    dni.setValue("DNI: "+miPropietario.getDni()+"");
-                    nombre.setValue(miPropietario.getNombre());
-                    telefono.setValue("Teléfono: "+miPropietario.getTelefono());
-                    mail.setValue("Email: "+miPropietario.getMail());
-                    password.setValue("Password: "+miPropietario.getClave());
-                    propietarioMutableLiveData.postValue(miPropietario);
+                    propietarioMutableLiveData.postValue(response.body());
                }
             }
 
