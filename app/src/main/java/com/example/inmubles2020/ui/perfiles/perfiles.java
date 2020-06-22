@@ -44,28 +44,26 @@ public class perfiles extends Fragment {
         etMail=view.findViewById(R.id.etMail);
         etPassword=view.findViewById(R.id.etPassword);
         btnActualizar=view.findViewById(R.id.btnActualizarPerfil);
-        vm.getPropietarioMutableLiveData().observe(this, new Observer<Propietario>() {
+        vm.getPropietarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
             @Override
             public void onChanged(Propietario propietario) {
-               etDni.setText(propietario.getDni());
+               etDni.setText(propietario.getDni()+"");
                etApellido.setText(propietario.getApellido());
                etNombre.setText(propietario.getNombre());
                etTelefono.setText(propietario.getTelefono());
                etMail.setText(propietario.getMail());
                etPassword.setText(propietario.getClave());
 
-               
+
             }
         });
-
-        // String palabra=getArguments().getString("palabra");
-        vm.obtenerDatos();
+             vm.obtenerDatos();
         return view;
     }
 
        public void activar(View v){
-           vm.obtenerDatos();
-            if(btnActualizar.getText()=="EDITAR")
+
+            if(btnActualizar.getText()!="EDITAR")
             {
                 etDni.setEnabled(true);
                 etApellido.setEnabled(true);
@@ -84,7 +82,7 @@ public class perfiles extends Fragment {
                 etPassword.setEnabled(false);
                 actualizar();
                 btnActualizar.setText("EDITAR");
-                vm.obtenerDatos();
+
             }
        }
         public void actualizar(){
