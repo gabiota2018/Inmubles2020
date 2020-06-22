@@ -67,7 +67,7 @@ public void actualizar(Propietario propietario){
 
         @Override
         public void onFailure(Call<Propietario> call, Throwable t) {
-
+Log.d("salida",t.getMessage());
         }
     });
     }
