@@ -27,43 +27,7 @@ public class perfiles extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         vm= ViewModelProviders.of(this).get(PerfilesViewModel.class);
-        vm.getApellido().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                etApellido.setText(s);
-            }
-        });
-        vm.getDni().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                etDni.setText(s);
-            }
-        });
-        vm.getNombre().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                etNombre.setText(s);
-            }
-        });
-        vm.getTelefono().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                etTelefono.setText(s);
-            }
-        });
-        vm.getMail().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                etMail.setText(s);
-            }
-        });
-        vm.getPassword().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                etPassword.setText(s);
-            }
-        });
-
+       
 
     }
 
