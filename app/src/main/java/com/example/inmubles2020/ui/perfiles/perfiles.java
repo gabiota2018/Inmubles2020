@@ -90,33 +90,10 @@ public class perfiles extends Fragment {
                 etTelefono.setEnabled(false);
                 etMail.setEnabled(false);
                 etPassword.setEnabled(false);
-                actualizar();
                 btnActualizar.setText("EDITAR");
             }
        }
 
-      /* public  void activar(View v){
-           if(btnActualizar.getText()=="EDITAR")
-           {
-               etDni.setEnabled(true);
-               etApellido.setEnabled(true);
-               etNombre.setEnabled(true);
-               etTelefono.setEnabled(true);
-               etMail.setEnabled(true);
-               etPassword.setEnabled(true);
-               btnActualizar.setText("GUARDAR");
-           }
-           else {
-               etDni.setEnabled(false);
-               etApellido.setEnabled(false);
-               etNombre.setEnabled(false);
-               etTelefono.setEnabled(false);
-               etMail.setEnabled(false);
-               etPassword.setEnabled(false);
-               actualizar();
-               btnActualizar.setText("EDITAR");
-           }
-       }*/
         public void actualizar(){
                 vm.getPropietarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
                     @Override
