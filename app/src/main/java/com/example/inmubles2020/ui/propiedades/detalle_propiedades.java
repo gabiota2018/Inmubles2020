@@ -13,9 +13,11 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.inmubles2020.R;
 import com.example.inmubles2020.ui.perfiles.PerfilesViewModel;
+import com.example.inmubles2020.ui.perfiles.Propietario;
 
 
 public class detalle_propiedades extends Fragment {
@@ -25,58 +27,21 @@ public class detalle_propiedades extends Fragment {
     private EditText etUsoP;
     private EditText etPrecioP;
     private CheckBox cbDisponibleP;
-    private Button btnGuardarP;
-    private Button btnGuardarP2;
+    private Button btnEditar;
+    private Button btnEliminar;
     private detallePropiedaesViewModel vm;
+    private Inmuebles miInmueble=null;
 
     public detalle_propiedades() {}
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       //vm=new detallePropiedaesViewModel();
-        vm= vm= ViewModelProviders.of(this).get(detallePropiedaesViewModel.class);
-       vm.etDireccionP().observe(this, new Observer<String>() {
-           @Override
-           public void onChanged(String s) {
-               etDireccionP.setText(s);
-           }
-       });
-       vm.etAmbienteP().observe(this, new Observer<String>() {
-           @Override
-           public void onChanged(String s) {
-               etAmbiente.setText(s);
-           }
-       });
-       vm.etTipoP().observe(this, new Observer<String>() {
-           @Override
-           public void onChanged(String s) {
-               etTipoP.setText(s);
-           }
-       });
-       vm.etUsoP().observe(this, new Observer<String>() {
-           @Override
-           public void onChanged(String s) {
-               etUsoP.setText(s);
-           }
-       });
-       vm.etPrecioP().observe(this, new Observer<String>() {
-           @Override
-           public void onChanged(String s) {
-               etPrecioP.setText(s);
-           }
-       });
-       vm.cbDisponibleP().observe(this, new Observer<Boolean>() {
-           @Override
-           public void onChanged(Boolean aBoolean) {
-               cbDisponibleP.setChecked(aBoolean);
-           }
-       });
-
-    }
+     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        vm= ViewModelProviders.of(this).get(detallePropiedaesViewModel.class);
         View view=inflater.inflate(R.layout.fragment_detalle_propiedades, container, false);
         etDireccionP=view.findViewById(R.id.etDireccionP);
         etAmbiente=view.findViewById(R.id.etAmbientesP);
@@ -84,27 +49,45 @@ public class detalle_propiedades extends Fragment {
         etTipoP=view.findViewById(R.id.etTipoP);
         etUsoP=view.findViewById(R.id.etUsoP);
         cbDisponibleP=view.findViewById(R.id.cbDisponibleP);
-        btnGuardarP=view.findViewById(R.id.btnGuardarP);
-        btnGuardarP2=view.findViewById(R.id.btnGuardarP2);
+        btnEditar=view.findViewById(R.id.btnGuardarP);
+        btnEliminar=view.findViewById(R.id.btnGuardarP2);
+
+        vm.getInmuebleMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Inmuebles>() {
+            @Override
+            public void onChanged(Inmuebles inmuebles) {
+                etDireccionP.setText(inmuebles.getDireccion());
+                etAmbiente.setText(inmuebles.getAmbientes()+"");
+                etPrecioP.setText(inmuebles.getPrecio()+"");
+                etTipoP.setText(inmuebles.getTipo());
+                etUsoP.setText(inmuebles.getUso());
+                if(inmuebles.getDisponible()==1)
+                    cbDisponibleP.setChecked(true);
+                else cbDisponibleP.setChecked(false);
+                miInmueble=inmuebles;
+            }
+        });
+       btnEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                miInmueble.setDireccion(etDireccionP.getText().toString());
+                miInmueble.setAmbientes(Integer.parseInt(etAmbiente.getText().toString()));
+                miInmueble.setPrecio(Double.parseDouble(etPrecioP.getText().toString()));
+                miInmueble.setTipo(etTipoP.getText().toString());
+                miInmueble.setUso(etUsoP.getText().toString());
+                if(cbDisponibleP.isChecked())miInmueble.setDisponible(1);
+                else miInmueble.setDisponible(0);
+               // Toast.makeText(getContext(),miInmueble.getInmuebleId()+"",Toast.LENGTH_LONG).show();
+                vm.actualizar(miInmueble);
+            }
+        });
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            vm.borrar(miInmueble.getInmuebleId());
+            }
+        });
         final String palabra=getArguments().getString("palabra");
-        String[] partes = palabra.split("-");
-        //queda el Id del inmueble en part1
-        final int part1 =Integer. parseInt(partes[0]);
-       vm.obtenerDatosInmuebles(palabra);
-       btnGuardarP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int disponer=0;
-                if(cbDisponibleP.isChecked())disponer=1;
-                vm.actualizar(etDireccionP.getText().toString(),etAmbiente.getText().toString(),etPrecioP.getText().toString(),etTipoP.getText().toString(),etUsoP.getText().toString(),disponer,part1);
-            }
-        });
-        btnGuardarP2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            vm.borrar(part1);
-            }
-        });
+        vm.obtenerDatosInmuebles(palabra);
         return view;
     }
 

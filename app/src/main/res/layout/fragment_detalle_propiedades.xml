@@ -18,7 +18,7 @@
         android:gravity="center_horizontal|left"
         android:hint="direccion"
         android:inputType="text"
-        android:focusable="false"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
         android:gravity="center_horizontal|left"
         android:hint="ambientes"
         android:inputType="text"
-        android:focusable="false"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
         android:gravity="center_horizontal|left"
         android:hint="tipos"
         android:inputType="text"
-        android:focusable="false"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,7 @@
         android:gravity="center_horizontal|left"
         android:hint="uso"
         android:inputType="text"
-        android:focusable="false"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
         android:gravity="center_horizontal|left"
         android:hint="precio"
         android:inputType="text"
-        android:focusable="false"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.393"
         app:layout_constraintStart_toStartOf="parent"

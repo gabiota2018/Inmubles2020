@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class Inmuebles {
-   private int idInmueble;
+   private int inmuebleId;
    private String direccion;
    private int ambientes;
    private String tipo;
@@ -18,13 +18,14 @@ public class Inmuebles {
     public Inmuebles(){}
 
     //---------------------------------------------------------
-    public int getIdInmueble() {
-        return idInmueble;
+    public int getInmuebleId() {
+        return inmuebleId;
     }
 
-    public void setIdInmueble(int idInmueble) {
-        this.idInmueble = idInmueble;
+    public void setInmuebleId(int inmuebleId) {
+        this.inmuebleId = inmuebleId;
     }
+
     //---------------------------------------------------------
     public String getDireccion() {
         return direccion;
@@ -89,8 +90,8 @@ public class Inmuebles {
     public ArrayList<Inmuebles> TraerDatos() {
         ArrayList<Inmuebles> listado = new ArrayList<Inmuebles>();
 
-        Inmuebles miInmueble = new Inmuebles();
-        miInmueble.setIdInmueble(1);
+         Inmuebles miInmueble = new Inmuebles();
+        miInmueble.setInmuebleId(1);
         miInmueble.setDireccion("Mar del Plata 245");
         miInmueble.setAmbientes(5);
         miInmueble.setUso("Vivienda");
@@ -101,7 +102,7 @@ public class Inmuebles {
         listado.add(miInmueble);
 
         miInmueble = new Inmuebles();
-        miInmueble.setIdInmueble(2);
+        miInmueble.setInmuebleId(2);
         miInmueble.setDireccion("Lic1 Mz2 Cs3");
         miInmueble.setAmbientes(2);
         miInmueble.setUso("Comercial");
@@ -112,7 +113,7 @@ public class Inmuebles {
         listado.add(miInmueble);
 
         miInmueble = new Inmuebles();
-        miInmueble.setIdInmueble(3);
+        miInmueble.setInmuebleId(3);
         miInmueble.setDireccion("Pringles 123 Planta Baja A");
         miInmueble.setAmbientes(3);
         miInmueble.setUso("Oficina");
@@ -128,7 +129,7 @@ public class Inmuebles {
         ArrayList<Inmuebles> listado = new ArrayList<Inmuebles>();
         Inmuebles miInmueble=new Inmuebles();
         for (Inmuebles inqui : listado = TraerDatos()) {
-            if(inqui.getIdInmueble()==id)
+            if(inqui.getInmuebleId()==id)
                miInmueble=inqui;
         };
         return miInmueble;
@@ -143,6 +144,8 @@ public class Inmuebles {
         };
         return listadoAlquilados;
     }
+
+
   /*  public Inmuebles obtenerPorIdDuenio(int id){
         ArrayList<Inmuebles> listado = new ArrayList<Inmuebles>();
         Inmuebles miInmueble=new Inmuebles();

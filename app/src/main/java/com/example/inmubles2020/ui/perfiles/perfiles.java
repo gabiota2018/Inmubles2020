@@ -53,12 +53,12 @@ public class perfiles extends Fragment {
         vm.getPropietarioMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Propietario>() {
             @Override
             public void onChanged(Propietario propietario) {
-               etDni.setText(propietario.getDni()+"");
-               etApellido.setText(propietario.getApellido());
-               etNombre.setText(propietario.getNombre());
-               etTelefono.setText(propietario.getTelefono());
-               etMail.setText(propietario.getMail());
-               etPassword.setText(propietario.getClave());
+               etDni.setText("DNI: "+propietario.getDni()+"");
+               etApellido.setText("Apellido: "+propietario.getApellido());
+               etNombre.setText("Nombre: "+propietario.getNombre());
+               etTelefono.setText("Telefono: "+propietario.getTelefono());
+               etMail.setText("Mail: "+propietario.getMail());
+               etPassword.setText("Password: "+propietario.getClave());
                miPropietario=propietario;
           }
         });
@@ -69,7 +69,7 @@ public class perfiles extends Fragment {
                 actualizar();
             }
         });
-             vm.obtenerDatos();
+        vm.obtenerDatos();
         return view;
     }
 
@@ -103,8 +103,6 @@ public class perfiles extends Fragment {
                 miPropietario.setTelefono(etTelefono.getText().toString());
                 miPropietario.setMail(etMail.getText().toString());
                 miPropietario.setClave(etPassword.getText().toString());
-
-
-            vm.actualizar(miPropietario);
+                vm.actualizar(miPropietario);
         }
 }

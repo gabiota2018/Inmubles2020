@@ -18,7 +18,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PerfilesViewModel extends AndroidViewModel {
-   private MutableLiveData<Propietario> propietarioMutableLiveData;
+    private MutableLiveData<Propietario> propietarioMutableLiveData;
     private Context context;
 
     public PerfilesViewModel(@NonNull Application application) {
@@ -36,6 +36,7 @@ public class PerfilesViewModel extends AndroidViewModel {
         SharedPreferences sp=context.getSharedPreferences("token",0);
         String accessToken=sp.getString("token","");
         Call<Propietario> propietarioCall= ApiClient.getMyApiClient().obtenerDatos(accessToken);
+
         propietarioCall.enqueue(new Callback<Propietario>() {
             @Override
             public void onResponse(Call<Propietario> call, Response<Propietario> response) {
@@ -46,7 +47,7 @@ public class PerfilesViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<Propietario> call, Throwable t) {
-
+                Log.d("salida",t.getMessage());
             }
         });
     }
@@ -56,6 +57,7 @@ public void actualizar(Propietario propietario){
     SharedPreferences sp=context.getSharedPreferences("token",0);
     String accessToken=sp.getString("token","");
     Call<Propietario> propietarioActualizado= ApiClient.getMyApiClient().actualizar(accessToken, propietario);
+
     propietarioActualizado.enqueue(new Callback<Propietario>() {
         @Override
         public void onResponse(Call<Propietario> call, Response<Propietario> response) {
@@ -67,7 +69,7 @@ public void actualizar(Propietario propietario){
 
         @Override
         public void onFailure(Call<Propietario> call, Throwable t) {
-Log.d("salida",t.getMessage());
+            Log.d("salida",t.getMessage());
         }
     });
     }
