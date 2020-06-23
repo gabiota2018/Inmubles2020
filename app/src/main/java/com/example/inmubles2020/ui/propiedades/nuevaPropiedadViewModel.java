@@ -3,6 +3,8 @@ package com.example.inmubles2020.ui.propiedades;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -17,67 +19,42 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class nuevaPropiedadViewModel  extends AndroidViewModel {
-
-        private MutableLiveData<String> etDireccionNu;
-        private MutableLiveData<String> etAmbienteNu;
-        private MutableLiveData<String> etTipoNu;
-        private MutableLiveData<String> etUsoNu;
-        private MutableLiveData<String> etPrecioNu;
-        private MutableLiveData<Boolean> cbDisponibleNu;
-        private Context context;
+    private  MutableLiveData<Inmuebles> inmuebleMutableLiveData;
+    private Context context;
 
     public nuevaPropiedadViewModel(@NonNull Application application) {
         super(application);
+        context=application.getApplicationContext();
     }
 
-    public LiveData<String> etDireccionNu() {
-            if(etDireccionNu==null){
-                etDireccionNu=new MutableLiveData<>();
-            }
-            return etDireccionNu;
+    public LiveData<Inmuebles> getInmuebleMutableLiveData()
+    {
+        if(inmuebleMutableLiveData == null)
+        {
+            inmuebleMutableLiveData = new MutableLiveData<>();
         }
-        public LiveData<String> etAmbienteNu() {
-            if(etAmbienteNu==null){
-                etAmbienteNu=new MutableLiveData<>();
-            }
-            return etAmbienteNu;
-        }
-        public LiveData<String> etTipoNu() {
-            if(etTipoNu==null){
-                etTipoNu=new MutableLiveData<>();
-            }
-            return etTipoNu;
-        }
-        public LiveData<String> etUsoNu() {
-            if(etUsoNu==null){
-                etUsoNu=new MutableLiveData<>();
-            }
-            return etUsoNu;
-        }
-        public LiveData<String> etPrecioNu() {
-            if(etPrecioNu==null){
-                etPrecioNu=new MutableLiveData<>();
-            }
-            return etPrecioNu;
-        }
-        public MutableLiveData<Boolean> cbDisponibleNu() {
-            if(cbDisponibleNu==null){
-                cbDisponibleNu=new MutableLiveData<>();
-            }
-            return cbDisponibleNu;
-        }
-public  void agregar(String direccion,String ambientes,String precio,String tipo,String uso, int disponer){
-    Inmuebles miInmueble=new Inmuebles();
-    miInmueble.setDireccion(direccion);
-    miInmueble.setAmbientes(Integer.parseInt(ambientes));
-    miInmueble.setTipo(tipo);
-    miInmueble.setUso(uso);
-    miInmueble.setPrecio(Double.parseDouble(precio));
+        return inmuebleMutableLiveData;
+    }
+    public  void agregar(Inmuebles miInmueble){
+        SharedPreferences sp=context.getSharedPreferences("token",0);
+        String accessToken=sp.getString("token","");
+        Call<Inmuebles> inmuebleNuevo = ApiClient.getMyApiClient().guardarInmueble(accessToken,miInmueble);
 
-    SharedPreferences sp=context.getSharedPreferences("token",0);
-    String accessToken=sp.getString("token","");
-    Call<Inmuebles> res = ApiClient.getMyApiClient().guardarInmueble(accessToken,miInmueble);
+        inmuebleNuevo.enqueue(new Callback<Inmuebles>() {
+            @Override
+            public void onResponse(Call<Inmuebles> call, Response<Inmuebles> response) {
+                Log.d("salida","por actualizar");
+                if(response.isSuccessful()){
+                    Toast.makeText(getApplication(),"Datos actualizados",Toast.LENGTH_LONG).show();
+                }
+            }
 
-}
+            @Override
+            public void onFailure(Call<Inmuebles> call, Throwable t) {
+                Log.d("salida",t.getMessage());
+            }
+        });
+    }
+
 
 }

@@ -57,13 +57,17 @@ public class ApiClient {
         @PUT("propietarios")
         Call<Propietario> actualizar(@Header("Authorization")String token,@Body Propietario p);
 
+
+
+
+
+
         @GET("Inmuebles")
         Call<List<Inmuebles>> listarInmuebles(@Header("Authorization") String token);
 
         @GET("Inmuebles/{id}")
         Call<Inmuebles> obtenerDatosInmueble(@Header("Authorization") String token,@Path("id")int id);
 
-       // @FormUrlEncoded
         @PUT("Inmuebles/{id}")
         Call<Inmuebles> actualizarInmueble(@Header("Authorization") String token, @Path("id") int id, @Body Inmuebles inmueble);
 

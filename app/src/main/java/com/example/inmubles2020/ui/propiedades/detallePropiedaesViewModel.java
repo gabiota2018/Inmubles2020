@@ -26,7 +26,6 @@ public class detallePropiedaesViewModel extends AndroidViewModel {
 
 
     public detallePropiedaesViewModel(@NonNull Application application) {
-
         super(application);
         context=application.getApplicationContext();
     }

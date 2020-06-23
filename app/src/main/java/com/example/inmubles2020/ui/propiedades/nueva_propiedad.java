@@ -25,17 +25,18 @@ public class nueva_propiedad extends Fragment {
     private CheckBox cbDisponibleNu;
     private Button btnAgregarNu;
     private nuevaPropiedadViewModel vm;
+    private Inmuebles miInmueble=null;
 
     public nueva_propiedad() {}
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       vm=ViewModelProviders.of(this).get(nuevaPropiedadViewModel.class);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        vm=ViewModelProviders.of(this).get(nuevaPropiedadViewModel.class);
         View view=inflater.inflate(R.layout.fragment_nueva_propiedad, container, false);
         etDireccionNu=view.findViewById(R.id.etDireccionNu);
         etAmbienteNu=view.findViewById(R.id.etAmbientesNu);
@@ -45,13 +46,32 @@ public class nueva_propiedad extends Fragment {
         cbDisponibleNu=view.findViewById(R.id.cbDisponibleNu);
         btnAgregarNu=view.findViewById(R.id.btnAgregarNu);
 
+        vm.getInmuebleMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Inmuebles>() {
+            @Override
+            public void onChanged(Inmuebles inmuebles) {
+                etDireccionNu.setText(inmuebles.getDireccion());
+                etAmbienteNu.setText(inmuebles.getAmbientes()+"");
+                etPrecioNu.setText(inmuebles.getPrecio()+"");
+                etTipoNu.setText(inmuebles.getTipo());
+                etUsoNu.setText(inmuebles.getUso());
+                if(inmuebles.getDisponible()==1)
+                    cbDisponibleNu.setChecked(true);
+                else cbDisponibleNu.setChecked(false);
+                miInmueble=inmuebles;
+            }
+        });
         btnAgregarNu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int disponer=0;
-                if(cbDisponibleNu.isChecked())disponer=1;
-                vm.agregar(etDireccionNu.getText().toString(),etAmbienteNu.getText().toString(),etPrecioNu.getText().toString(),etTipoNu.getText().toString(),etUsoNu.getText().toString(),disponer);
-            }
+                miInmueble.setDireccion(etDireccionNu.getText().toString());
+                miInmueble.setAmbientes(Integer.parseInt(etAmbienteNu.getText().toString()));
+                miInmueble.setPrecio(Double.parseDouble(etPrecioNu.getText().toString()));
+                miInmueble.setTipo(etTipoNu.getText().toString());
+                miInmueble.setUso(etUsoNu.getText().toString());
+                if(cbDisponibleNu.isChecked())miInmueble.setDisponible(1);
+                else miInmueble.setDisponible(0);
+                vm.agregar(miInmueble);
+                   }
         });
         return view;
     }
